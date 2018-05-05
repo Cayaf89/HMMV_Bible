@@ -35,31 +35,25 @@
         </id>
 
         <one-to-one   field="competence"        target-entity="Competence"      mapped-by="heroes"   />
-        <one-to-many  field="terrainBase"       target-entity="TerrainBase"     mapped-by="factions" />
+        <one-to-many  field="terrain"       target-entity="Terrain"     mapped-by="factions" />
         <many-to-one  field="heroes"            target-entity="Hero"            mapped-by="faction"  />
         <many-to-many field="magiesPreferees"   target-entity="Magie"                                />
         <many-to-many field="specialisations"   target-entity="Specialisation"                       />
 
         <field name="nomFaction"        type="string"   />
-        <field name="nomHero"           type="string"   />
+        <field name="typeHero"           type="string"   />
         <field name="description"       type="text"     />
-        <field name="defense"           type="smallint" />
-        <field name="puissanceMagique"  type="smallint" />
-        <field name="esprit"            type="smallint" />
-        <field name="mana"              type="smallint" />
-        <field name="moral"             type="smallint" />
-        <field name="chance"            type="smallint" />
 
     </entity>
 
-    <entity name="App\Entity\TerrainBase">
+    <entity name="App\Entity\Terrain">
 
         <id name="id" type="integer" column="id">
             <generator strategy="IDENTITY" />
         </id>
 
-        <many-to-one field="factions"        target-entity="Faction"         mapped-by="terrainBase" />
-        <one-to-one  field="coutDeplacement" target-entity="CoutDeplacement" mapped-by="terrainBase" />
+        <many-to-one field="factions"        target-entity="Faction"         mapped-by="terrain" />
+        <one-to-one  field="coutDeplacement" target-entity="CoutDeplacement" mapped-by="terrain" />
 
         <field name="nom" type="string" />
 
@@ -99,9 +93,8 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-one field="terrainOrigine" target-entity="TerrainBase" mapped-by="coutDeplacement" />
+        <one-to-one field="terrain" target-entity="Terrain" mapped-by="coutDeplacement" />
 
-        <field name="terrain"     type="string"  />
         <field name="penalite" type="text"    />
 
     </entity>

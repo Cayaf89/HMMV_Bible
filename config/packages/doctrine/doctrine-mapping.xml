@@ -1,19 +1,24 @@
-<doctrine-mapping>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                   https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+    
     <entity name="App\Entity\Hero">
 
         <id name="id" type="integer" column="id">
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-many  field="faction"       target-entity="Faction"         mapped-by="heroes" />
-        <many-to-many field="competences"   target-entity="Competence"                         />
-        <one-to-one   field="capaciteHero"  target-entity="CapaciteHero"    mapped-by="hero"   />
-        <many-to-many field="capacites"     target-entity="Capacite"                           />
-        <many-to-many field="armee"         target-entity="Peloton"                            />
-        <many-to-many field="sortsDepart"   target-entity="Sort"                               />
+        <one-to-many  field="faction"       target-entity="Faction"         mapped-by="heroes"      />
+        <one-to-many  field="faction"       target-entity="Faction"         mapped-by="creatures"   />
+        <one-to-one   field="capaciteHero"  target-entity="CapaciteHero"    mapped-by="hero"        />
+        <many-to-many field="competences"   target-entity="Competence"                              />
+        <many-to-many field="capacites"     target-entity="Capacite"                                />
+        <many-to-many field="armee"         target-entity="Peloton"                                 />
+        <many-to-many field="sortsDepart"   target-entity="Sort"                                    />
 
-        <field name="nom"               type="string" />
-        <field name="description"       type="text" />
+        <field name="nom"               type="string"   />
+        <field name="description"       type="text"     />
         <field name="attaque"           type="smallint" />
         <field name="defense"           type="smallint" />
         <field name="puissanceMagique"  type="smallint" />
@@ -54,8 +59,8 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <many-to-one field="factions" target-entity="Faction" mapped-by="terrainBase" />
-        <one-to-one field="coutDeplacement" target-entity="CoutDeplacement" mapped-by="terrainBase" />
+        <many-to-one field="factions"        target-entity="Faction"         mapped-by="terrainBase" />
+        <one-to-one  field="coutDeplacement" target-entity="CoutDeplacement" mapped-by="terrainBase" />
 
         <field name="nom" type="string" />
 
@@ -108,8 +113,8 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <field name="nom"      type="string"  />
-        <field name="quantite" type="string"    />
+        <field name="nom"      type="string" />
+        <field name="quantite" type="string" />
 
     </entity>
 
@@ -134,7 +139,7 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-many field="hero"     target-entity="Hero"     mapped-by="armee" />
+        <one-to-many field="hero"     target-entity="Hero"     mapped-by="armee"    />
         <one-to-many field="creature" target-entity="Creature" mapped-by="peletons" />
 
         <field name="quantite" type="smallint" />
@@ -147,10 +152,10 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-one  field="ville" target-entity="Ville" mapped-by="specialisation" />=
+        <one-to-one  field="ville" target-entity="Ville" mapped-by="specialisation" />
 
-        <field name="nom" type="string" />
-        <field name="description" type="text" />
+        <field name="nom"         type="string" />
+        <field name="description" type="text"   />
 
     </entity>
     
@@ -179,11 +184,11 @@
         <one-to-one   field="artefactNecessaire" target-entity="Artefact"                                />
         <one-to-one   field="ville"              target-entity="Ville"                                   />
         <one-to-many  field="creaturesProduites" target-entity="Creature" mapped-by="batimentProducteur" />
-        <many-to-many field="coutRessource"      target-entity="Ressource"                               />
+        <many-to-many field="coutRessources"     target-entity="Ressource"                               />
         
-        <field name="nom" type="string" />
-        <field name="description" type="text" />
-        <field name="niveauVille" type="smallint" />
+        <field name="nom"         type="string"     />
+        <field name="description" type="text"       />
+        <field name="niveauVille" type="smallint"   />
 
     </entity>
     
@@ -193,11 +198,11 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <many-to-one field="panoplie" target-entity="Panoplie" mapped-by="artefacts" />
+        <many-to-one field="panoplie"      target-entity="Panoplie"  mapped-by="artefacts" />
+        <many-to-one field="coutRessource" target-entity="Ressource" mapped-by="artefacts" />
         
         <field name="nom"           type="string"   />
         <field name="description"   type="text"     />
-        <field name="coutOr"        type="smallint" />
         <field name="emplacement"   type="string"   />
         <field name="importance"    type="string"   />
 
@@ -211,8 +216,8 @@
 
         <one-to-many field="artefacts" target-entity="Artefact" mapped-by="panoplie" />
         
-        <field name="nom"           type="string"   />
-        <field name="description"   type="text"     />
+        <field name="nom"         type="string" />
+        <field name="description" type="text"   />
 
     </entity>
     
@@ -222,8 +227,8 @@
             <generator strategy="IDENTITY" />
         </id>
         
-        <field name="nom"           type="string"   />
-        <field name="description"   type="text"     />
+        <field name="nom"         type="string" />
+        <field name="description" type="text"   />
 
     </entity>
     
@@ -234,8 +239,11 @@
             <discriminator-mapping value="CapaciteCreature" class="App\Entity\CapaciteCreature" />
         </discriminator-map>
         
-        <discriminator-column name="nom" type="string" />
-        <discriminator-column name="description " type="text" />
+        <one-to-many  field="competenceRequise" target-entity="Competence" mapped-by="capacites" />
+        <many-to-many field="capacitesRequises" target-entity="Capacite"                         />
+        
+        <discriminator-column name="nom"          type="string" />
+        <discriminator-column name="description " type="text"   />
         
     </entity>
     
@@ -254,7 +262,62 @@
         <id name="id" type="integer" column="id">
             <generator strategy="IDENTITY" />
         </id>
+        
+    </entity>
+    
+    <entity name="App\Entity\Creature">
 
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY" />
+        </id>
+        
+        <one-to-many  field="faction"        target-entity="Faction"   mapped-by="creatures" />
+        <many-to-many field="capacites"      target-entity="Capacite"                        />
+        <many-to-many field="coutRessources" target-entity="Ressource"                       />
+        
+        <field name="nom"               type="string"   />
+        <field name="description"       type="text"     />
+        <field name="attaque"           type="smallint" />
+        <field name="defense"           type="smallint" />
+        <field name="puissanceMagique"  type="smallint" />
+        <field name="esprit"            type="smallint" />
+        <field name="dommageMin"        type="smallint" />
+        <field name="dommageMax"        type="smallint" />
+        <field name="pdv"               type="smallint" />
+        <field name="initiative"        type="smallint" />
+        <field name="vitesse"           type="smallint" />
+        <field name="tirs"              type="smallint" />
+        <field name="mana"              type="smallint" />
+        <field name="croissance"        type="smallint" />
+        <field name="moral"             type="smallint" />
+        <field name="chance"            type="smallint" />
+        
+    </entity>
+    
+    <entity name="App\Entity\Ressource">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY" />
+        </id>
+        
+        <many-to-one field="artefacts" target-entity="Artefact" mapped-by="coutRessource" />
+        
+        <field name="nom"      type="string"   />
+        <field name="quantite" type="smallint" />
+        
+    </entity>
+    
+    <entity name="App\Entity\MachineDeGuerre">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY" />
+        </id>
+        
+        <many-to-one field="artefacts" target-entity="Artefact" mapped-by="coutRessource" />
+        
+        <field name="nom"         type="string" />
+        <field name="description" type="text"   />
+        
     </entity>
     
 </doctrine-mapping>

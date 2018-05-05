@@ -10,7 +10,6 @@
         </id>
 
         <one-to-many  field="faction"       target-entity="Faction"         mapped-by="heroes"      />
-        <one-to-many  field="faction"       target-entity="Faction"         mapped-by="creatures"   />
         <one-to-one   field="capaciteHero"  target-entity="CapaciteHero"    mapped-by="hero"        />
         <many-to-many field="competences"   target-entity="Competence"                              />
         <many-to-many field="capacites"     target-entity="Capacite"                                />
@@ -300,7 +299,8 @@
             <generator strategy="IDENTITY" />
         </id>
         
-        <many-to-one field="artefacts" target-entity="Artefact" mapped-by="coutRessource" />
+        <many-to-one field="artefacts"        target-entity="Artefact"        mapped-by="coutRessource" />
+        <many-to-one field="machinesDeGuerre" target-entity="MachineDeGuerre" mapped-by="coutRessource" />
         
         <field name="nom"      type="string"   />
         <field name="quantite" type="smallint" />
@@ -313,7 +313,7 @@
             <generator strategy="IDENTITY" />
         </id>
         
-        <many-to-one field="artefacts" target-entity="Artefact" mapped-by="coutRessource" />
+        <many-to-one field="coutRessource" target-entity="Ressource" mapped-by="machinesDeGuerre" />
         
         <field name="nom"         type="string" />
         <field name="description" type="text"   />

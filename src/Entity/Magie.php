@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 /**
  * Description of Magie
@@ -18,8 +17,8 @@ class Magie {
     private $description;
     
     public function __construct() {
-        $this->sorts              = new Collection();
-        $this->factionsPreference = new Collection();
+        $this->sorts              = new ArrayCollection();
+        $this->factionsPreference = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -64,9 +63,9 @@ class Magie {
     }
 
     /**
-     * @return Collection|Faction[]
+     * @return ArrayCollection|Faction[]
      */
-    public function getFactionsPreference(): Collection
+    public function getFactionsPreference(): ArrayCollection
     {
         return $this->factionsPreference;
     }

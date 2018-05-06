@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Description of Terrain
@@ -16,7 +16,7 @@ class Terrain {
     private $nom;
     
     public function __construct() {
-        $this->factions = new Collection();
+        $this->factions = new ArrayCollection();
     }
 
     public function getNom(): ?string

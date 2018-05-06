@@ -9,7 +9,7 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-one field="terrain" target-entity="Terrain" inversed-by="coutDeplacement" />
+        <one-to-one field="terrain" target-entity="Terrain" mapped-by="coutDeplacement" />
 
         <field name="coutDeMouvement"     type="smallint" />
         <field name="deplacementDiagonal" type="smallint" />

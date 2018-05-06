@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panoplie index{% endblock %}
+
+{% block body %}
+    <h1>Panoplie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for panoplie in panoplies %}
+            <tr>
+                <td>{{ panoplie.nom }}</td>
+                <td>{{ panoplie.description }}</td>
+                <td>{{ panoplie.id }}</td>
+                <td>
+                    <a href="{{ path('panoplie_show', {'id': panoplie.id}) }}">show</a>
+                    <a href="{{ path('panoplie_edit', {'id': panoplie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('panoplie_new') }}">Create new</a>
+{% endblock %}

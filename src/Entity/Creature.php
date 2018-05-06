@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Creature {
     
@@ -33,12 +32,12 @@ class Creature {
     private $coutRessources;
     
     public function __construct() {
-        $this->faction       = new Collection();
-        $this->capacites     = new Collection();
-        $this->pelotons      = new Collection();
-        $this->coutRessource = new Collection();
-        $this->batimentProducteur = new Collection();
-        $this->coutRessources = new Collection();
+        $this->faction       = new ArrayCollection();
+        $this->capacites     = new ArrayCollection();
+        $this->pelotons      = new ArrayCollection();
+        $this->coutRessource = new ArrayCollection();
+        $this->batimentProducteur = new ArrayCollection();
+        $this->coutRessources = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -239,9 +238,9 @@ class Creature {
     }
 
     /**
-     * @return Collection|Batiment[]
+     * @return ArrayCollection|Batiment[]
      */
-    public function getBatimentProducteur(): Collection
+    public function getBatimentProducteur(): ArrayCollection
     {
         return $this->batimentProducteur;
     }
@@ -294,9 +293,9 @@ class Creature {
     }
 
     /**
-     * @return Collection|Capacite[]
+     * @return ArrayCollection|Capacite[]
      */
-    public function getCapacites(): Collection
+    public function getCapacites(): ArrayCollection
     {
         return $this->capacites;
     }
@@ -320,9 +319,9 @@ class Creature {
     }
 
     /**
-     * @return Collection|Ressource[]
+     * @return ArrayCollection|Ressource[]
      */
-    public function getCoutRessources(): Collection
+    public function getCoutRessources(): ArrayCollection
     {
         return $this->coutRessources;
     }

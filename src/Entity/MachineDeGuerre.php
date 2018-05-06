@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class MachineDeGuerre {
     
@@ -14,7 +13,7 @@ class MachineDeGuerre {
 
     public function __construct()
     {
-        $this->coutRessource = new Collection();
+        $this->coutRessource = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -47,9 +46,9 @@ class MachineDeGuerre {
     }
 
     /**
-     * @return Collection|Ressource[]
+     * @return ArrayCollection|Ressource[]
      */
-    public function getCoutRessource(): Collection
+    public function getCoutRessource(): ArrayCollection
     {
         return $this->coutRessource;
     }

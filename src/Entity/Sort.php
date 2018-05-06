@@ -2,9 +2,7 @@
 
 namespace App\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Sort {
     
@@ -16,8 +14,8 @@ class Sort {
     private $heros;
     
     public function __construct() {
-        $this->heros = new Collection();
-        $this->magie = new Collection();
+        $this->heros = new ArrayCollection();
+        $this->magie = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -62,9 +60,9 @@ class Sort {
     }
 
     /**
-     * @return Collection|Magie[]
+     * @return ArrayCollection|Magie[]
      */
-    public function getMagie(): Collection
+    public function getMagie(): ArrayCollection
     {
         return $this->magie;
     }
@@ -93,9 +91,9 @@ class Sort {
     }
 
     /**
-     * @return Collection|Hero[]
+     * @return ArrayCollection|Hero[]
      */
-    public function getHeros(): Collection
+    public function getHeros(): ArrayCollection
     {
         return $this->heros;
     }

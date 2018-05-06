@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Peloton index{% endblock %}
+
+{% block body %}
+    <h1>Peloton index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quantite</th>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for peloton in pelotons %}
+            <tr>
+                <td>{{ peloton.quantite }}</td>
+                <td>{{ peloton.id }}</td>
+                <td>
+                    <a href="{{ path('peloton_show', {'id': peloton.id}) }}">show</a>
+                    <a href="{{ path('peloton_edit', {'id': peloton.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('peloton_new') }}">Create new</a>
+{% endblock %}

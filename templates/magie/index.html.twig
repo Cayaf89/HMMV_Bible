@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magie index{% endblock %}
+
+{% block body %}
+    <h1>Magie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for magie in magies %}
+            <tr>
+                <td>{{ magie.nom }}</td>
+                <td>{{ magie.description }}</td>
+                <td>{{ magie.id }}</td>
+                <td>
+                    <a href="{{ path('magie_show', {'id': magie.id}) }}">show</a>
+                    <a href="{{ path('magie_edit', {'id': magie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('magie_new') }}">Create new</a>
+{% endblock %}

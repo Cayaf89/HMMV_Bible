@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magie{% endblock %}
+
+{% block body %}
+    <h1>Magie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ magie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ magie.description }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ magie.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('magie_index') }}">back to list</a>
+
+    <a href="{{ path('magie_edit', {'id': magie.id}) }}">edit</a>
+
+    {{ include('magie/_delete_form.html.twig') }}
+{% endblock %}

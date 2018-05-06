@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sort index{% endblock %}
+
+{% block body %}
+    <h1>Sort index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>CoutMana</th>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sort in sorts %}
+            <tr>
+                <td>{{ sort.nom }}</td>
+                <td>{{ sort.description }}</td>
+                <td>{{ sort.coutMana }}</td>
+                <td>{{ sort.id }}</td>
+                <td>
+                    <a href="{{ path('sort_show', {'id': sort.id}) }}">show</a>
+                    <a href="{{ path('sort_edit', {'id': sort.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sort_new') }}">Create new</a>
+{% endblock %}

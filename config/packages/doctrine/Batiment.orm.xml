@@ -9,12 +9,12 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-many  field="ville"              target-entity="Ville"     inversed-by="batiments"        />
-        <many-to-one  field="creaturesProduites" target-entity="Creature"  mapped-by="batimentProducteur" />
-        <one-to-one   field="batimentNecessaire" target-entity="Batiment"  inversed-by="batimentDebloque" />
-        <one-to-one   field="batimentDebloque"   target-entity="Batiment"  mapped-by="batimentNecessaire" />
-        <one-to-one   field="artefactNecessaire" target-entity="Artefact"  mapped-by="batimentDebloque" />
-        <many-to-many field="coutRessources"     target-entity="Ressource" mapped-by="batimentsDebloque"  />
+        <one-to-many  field="ville"              target-entity="Ville"     mapped-by="batiments"        />
+        <many-to-one  field="creaturesProduites" target-entity="Creature"  inversed-by="batimentProducteur" />
+        <one-to-one   field="batimentNecessaire" target-entity="Batiment"  mapped-by="batimentDebloque" />
+        <one-to-one   field="batimentDebloque"   target-entity="Batiment"  inversed-by="batimentNecessaire" />
+        <one-to-one   field="artefactNecessaire" target-entity="Artefact"  inversed-by="batimentDebloque" />
+        <many-to-many field="coutRessources"     target-entity="Ressource" inversed-by="batimentsDebloques"  />
         
         <field name="nom"         type="string"     />
         <field name="description" type="text"       />

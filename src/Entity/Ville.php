@@ -4,7 +4,6 @@ namespace App\Entity;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Ville {
     
@@ -16,8 +15,8 @@ class Ville {
     private $batiments;
     
     public function __construct() {
-        $this->batiments = new Collection();
-        $this->faction = new Collection();
+        $this->batiments = new ArrayCollection();
+        $this->faction = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -50,9 +49,9 @@ class Ville {
     }
 
     /**
-     * @return Collection|Faction[]
+     * @return ArrayCollection|Faction[]
      */
-    public function getFaction(): Collection
+    public function getFaction(): ArrayCollection
     {
         return $this->faction;
     }

@@ -9,8 +9,8 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-many field="faction"   target-entity="Faction"  inversed-by="villes" />
-        <many-to-one field="batiments" target-entity="Batiment" mapped-by="ville"    />
+        <one-to-many field="faction"   target-entity="Faction"  mapped-by="villes" />
+        <many-to-one field="batiments" target-entity="Batiment" inversed-by="ville"    />
 
         <field name="nom"         type="string" />
         <field name="description" type="text"   />

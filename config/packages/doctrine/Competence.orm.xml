@@ -9,9 +9,9 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <many-to-many field="capacites" target-entity="Capacite" mapped-by="competenceRequise"   />
+        <many-to-one field="capacites" target-entity="Capacite"  inversed-by="competenceRequise"   />
         <many-to-many field="heros"     target-entity="Hero"     inversed-by="competences"       />
-        <one-to-one   field="faction"   target-entity="Faction"  inversed-by="competence"        />
+        <one-to-one   field="faction"   target-entity="Faction"  mapped-by="competence"        />
 
         <field name="nom"         type="string"  />
         <field name="description" type="text"    />

@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Batiment {
     
@@ -20,9 +19,9 @@ class Batiment {
     
     public function __construct() 
     {
-        $this->coutRessources     = new Collection();
-        $this->creaturesProduites = new Collection();
-        $this->ville              = new Collection();
+        $this->coutRessources     = new ArrayCollection();
+        $this->creaturesProduites = new ArrayCollection();
+        $this->ville              = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -91,9 +90,9 @@ class Batiment {
     }
 
     /**
-     * @return Collection|Ville[]
+     * @return ArrayCollection|Ville[]
      */
-    public function getVille(): Collection
+    public function getVille(): ArrayCollection
     {
         return $this->ville;
     }
@@ -134,9 +133,9 @@ class Batiment {
     }
 
     /**
-     * @return Collection|Ressource[]
+     * @return ArrayCollection|Ressource[]
      */
-    public function getCoutRessources(): Collection
+    public function getCoutRessources(): ArrayCollection
     {
         return $this->coutRessources;
     }

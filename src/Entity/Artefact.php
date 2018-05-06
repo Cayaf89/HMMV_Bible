@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Artefact {
     
@@ -18,8 +17,8 @@ class Artefact {
 
     public function __construct()
     {
-        $this->panoplie      = new Collection();
-        $this->coutRessource = new Collection();
+        $this->panoplie      = new ArrayCollection();
+        $this->coutRessource = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -76,9 +75,9 @@ class Artefact {
     }
 
     /**
-     * @return Collection|Panoplie[]
+     * @return ArrayCollection|Panoplie[]
      */
-    public function getPanoplie(): Collection
+    public function getPanoplie(): ArrayCollection
     {
         return $this->panoplie;
     }
@@ -107,9 +106,9 @@ class Artefact {
     }
 
     /**
-     * @return Collection|Ressource[]
+     * @return ArrayCollection|Ressource[]
      */
-    public function getCoutRessource(): Collection
+    public function getCoutRessource(): ArrayCollection
     {
         return $this->coutRessource;
     }

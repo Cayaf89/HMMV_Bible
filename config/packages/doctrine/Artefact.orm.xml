@@ -11,7 +11,7 @@
 
         <one-to-many field="panoplie"         target-entity="Panoplie"  mapped-by="artefacts"          />
         <one-to-many field="coutRessource"    target-entity="Ressource" mapped-by="artefacts"            />
-        <one-to-one  field="batimentDebloque" target-entity="Batiment"  inversed-by="artefactNecessaire" />
+        <one-to-one  field="batimentDebloque" target-entity="Batiment"  mapped-by="artefactNecessaire" />
         
         <field name="nom"           type="string"   />
         <field name="description"   type="text"     />

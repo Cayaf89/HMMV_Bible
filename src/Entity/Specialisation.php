@@ -2,9 +2,7 @@
 
 namespace App\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Specialisation {
     
@@ -16,8 +14,8 @@ class Specialisation {
     private $heros;
     
     public function __construct() {
-        $this->heros        = new Collection();
-        $this->factionsHero = new Collection();
+        $this->heros        = new ArrayCollection();
+        $this->factionsHero = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -80,9 +78,9 @@ class Specialisation {
     }
 
     /**
-     * @return Collection|Faction[]
+     * @return ArrayCollection|Faction[]
      */
-    public function getFactionsHero(): Collection
+    public function getFactionsHero(): ArrayCollection
     {
         return $this->factionsHero;
     }

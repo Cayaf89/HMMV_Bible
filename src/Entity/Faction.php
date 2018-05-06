@@ -3,13 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
-/**
- * Description of Faction
- *
- * @author Alexi
- */
 class Faction {
     private $id;
     private $competence;
@@ -26,12 +20,12 @@ class Faction {
     
     public function __construct() 
     {
-        $this->heros               = new Collection();
-        $this->magiesPreferees     = new Collection();
-        $this->specialisationsHero = new Collection();
-        $this->creatures           = new Collection();
-        $this->villes              = new Collection();
-        $this->terrain = new Collection();
+        $this->heros               = new ArrayCollection();
+        $this->magiesPreferees     = new ArrayCollection();
+        $this->specialisationsHero = new ArrayCollection();
+        $this->creatures           = new ArrayCollection();
+        $this->villes              = new ArrayCollection();
+        $this->terrain = new ArrayCollection();
     }
 
     public function getNomFaction(): ?string
@@ -106,9 +100,9 @@ class Faction {
     }
 
     /**
-     * @return Collection|Terrain[]
+     * @return ArrayCollection|Terrain[]
      */
-    public function getTerrain(): Collection
+    public function getTerrain(): ArrayCollection
     {
         return $this->terrain;
     }
@@ -137,9 +131,9 @@ class Faction {
     }
 
     /**
-     * @return Collection|Hero[]
+     * @return ArrayCollection|Hero[]
      */
-    public function getHeros(): Collection
+    public function getHeros(): ArrayCollection
     {
         return $this->heros;
     }
@@ -168,9 +162,9 @@ class Faction {
     }
 
     /**
-     * @return Collection|Creature[]
+     * @return ArrayCollection|Creature[]
      */
-    public function getCreatures(): Collection
+    public function getCreatures(): ArrayCollection
     {
         return $this->creatures;
     }
@@ -211,9 +205,9 @@ class Faction {
     }
 
     /**
-     * @return Collection|Magie[]
+     * @return ArrayCollection|Magie[]
      */
-    public function getMagiesPreferees(): Collection
+    public function getMagiesPreferees(): ArrayCollection
     {
         return $this->magiesPreferees;
     }
@@ -237,9 +231,9 @@ class Faction {
     }
 
     /**
-     * @return Collection|Specialisation[]
+     * @return ArrayCollection|Specialisation[]
      */
-    public function getSpecialisationsHero(): Collection
+    public function getSpecialisationsHero(): ArrayCollection
     {
         return $this->specialisationsHero;
     }

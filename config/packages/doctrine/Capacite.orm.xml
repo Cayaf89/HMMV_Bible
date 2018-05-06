@@ -9,14 +9,11 @@
             <generator strategy="IDENTITY" />
         </id>
         
-        <one-to-many  field="competenceRequise"  target-entity="Competence" inversed-by="capacites"          />
+        <one-to-many  field="competenceRequise"  target-entity="Competence" mapped-by="capacites"          />
         <many-to-many field="capacitesRequises"  target-entity="Capacite"   inversed-by="capacitesDebloques" />
-        <many-to-many field="capacitesDebloques" target-entity="Capacite"   inversed-by="capacitesRequises"  />
-        <many-to-many field="heros"              target-entity="Hero"       inversed-by="capacites"          />
         
         <field name="nom"         type="string" />
         <field name="description" type="text"   />
-        
     </entity>
     
 </doctrine-mapping>

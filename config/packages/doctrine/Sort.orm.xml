@@ -9,7 +9,7 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-many  field="magie" target-entity="Magie" inversed-by="sorts" />
+        <one-to-many  field="magie" target-entity="Magie" mapped-by="sorts" />
         <many-to-many field="heros" target-entity="Hero"  inversed-by="sorts" />
 
         <field name="nom"           type="string"   />

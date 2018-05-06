@@ -9,7 +9,7 @@
             <generator strategy="IDENTITY" />
         </id>
         
-        <one-to-one field="hero" target-entity="Hero" inversed-by="capaciteHero" />
+        <one-to-one field="hero" target-entity="Hero" mapped-by="capaciteHero" />
 
         <field name="nom"         type="string" />
         <field name="description" type="text"   />

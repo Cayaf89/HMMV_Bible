@@ -9,11 +9,11 @@
             <generator strategy="IDENTITY" />
         </id>
         
-        <one-to-many  field="batimentProducteur" target-entity="Batiment"         inversed-by="creaturesProduites" />
-        <one-to-many  field="faction"            target-entity="Faction"          inversed-by="creatures"          />
+        <one-to-many  field="batimentProducteur" target-entity="Batiment"         mapped-by="creaturesProduites" />
+        <one-to-many  field="faction"            target-entity="Faction"          mapped-by="creatures"          />
         <many-to-one  field="pelotons"           target-entity="Peloton"          inversed-by="creature"           />
-        <many-to-many field="capacites"          target-entity="CapaciteCreature" mapped-by="creatures"            />
-        <many-to-many field="coutRessources"     target-entity="Ressource"        mapped-by="creatures"            />
+        <many-to-many field="capacites"          target-entity="CapaciteCreature" inversed-by="creatures"            />
+        <many-to-many field="coutRessources"     target-entity="Ressource"        inversed-by="creatures"            />
         
         <field name="nom"               type="string"   />
         <field name="description"       type="text"     />

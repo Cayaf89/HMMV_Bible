@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Capacite {
     
@@ -17,9 +16,9 @@ class Capacite {
     
     public function __construct() 
     {
-        $this->capacitesRequises = new Collection();
-        $this->heros             = new Collection();
-        $this->competenceRequise = new Collection();
+        $this->capacitesRequises = new ArrayCollection();
+        $this->heros             = new ArrayCollection();
+        $this->competenceRequise = new ArrayCollection();
         $this->capacitesDebloques = new ArrayCollection();
     }
 
@@ -48,9 +47,9 @@ class Capacite {
     }
 
     /**
-     * @return Collection|Competence[]
+     * @return ArrayCollection|Competence[]
      */
-    public function getCompetenceRequise(): Collection
+    public function getCompetenceRequise(): ArrayCollection
     {
         return $this->competenceRequise;
     }
@@ -79,9 +78,9 @@ class Capacite {
     }
 
     /**
-     * @return Collection|Capacite[]
+     * @return ArrayCollection|Capacite[]
      */
-    public function getCapacitesRequises(): Collection
+    public function getCapacitesRequises(): ArrayCollection
     {
         return $this->capacitesRequises;
     }
@@ -105,9 +104,9 @@ class Capacite {
     }
 
     /**
-     * @return Collection|Hero[]
+     * @return ArrayCollection|Hero[]
      */
-    public function getHeros(): Collection
+    public function getHeros(): ArrayCollection
     {
         return $this->heros;
     }
@@ -136,9 +135,9 @@ class Capacite {
     }
 
     /**
-     * @return Collection|Capacite[]
+     * @return ArrayCollection|Capacite[]
      */
-    public function getCapacitesDebloques(): Collection
+    public function getCapacitesDebloques(): ArrayCollection
     {
         return $this->capacitesDebloques;
     }

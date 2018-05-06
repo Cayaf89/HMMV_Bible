@@ -2,9 +2,7 @@
 
 namespace App\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Peloton {
     
@@ -15,8 +13,8 @@ class Peloton {
     
     public function __construct() 
     {
-        $this->heros = new Collection();
-        $this->creature = new Collection();
+        $this->heros = new ArrayCollection();
+        $this->creature = new ArrayCollection();
     }
 
     public function getQuantite(): ?int
@@ -37,9 +35,9 @@ class Peloton {
     }
 
     /**
-     * @return Collection|Creature[]
+     * @return ArrayCollection|Creature[]
      */
-    public function getCreature(): Collection
+    public function getCreature(): ArrayCollection
     {
         return $this->creature;
     }
@@ -68,9 +66,9 @@ class Peloton {
     }
 
     /**
-     * @return Collection|Hero[]
+     * @return ArrayCollection|Hero[]
      */
-    public function getHeros(): Collection
+    public function getHeros(): ArrayCollection
     {
         return $this->heros;
     }

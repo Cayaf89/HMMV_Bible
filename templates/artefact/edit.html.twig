@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Artefact{% endblock %}
+
+{% block body %}
+    <h1>Edit Artefact</h1>
+
+    {{ include('artefact/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('artefact_index') }}">back to list</a>
+
+    {{ include('artefact/_delete_form.html.twig') }}
+{% endblock %}

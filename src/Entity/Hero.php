@@ -2,14 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
-
-/**
- * Description of Hero
- *
- * @author Alexis
- */
 class Hero {
     private $id;
     private $faction;
@@ -31,12 +25,12 @@ class Hero {
     
     public function __construct()
     {
-        $this->competences    = new Collection();
-        $this->capacites      = new Collection();
-        $this->armee          = new Collection();
-        $this->sortsDepart    = new Collection();
-        $this->faction        = new Collection();
-        $this->specialisation = new Collection();
+        $this->competences    = new ArrayCollection();
+        $this->capacites      = new ArrayCollection();
+        $this->armee          = new ArrayCollection();
+        $this->sortsDepart    = new ArrayCollection();
+        $this->faction        = new ArrayCollection();
+        $this->specialisation = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -165,9 +159,9 @@ class Hero {
     }
 
     /**
-     * @return Collection|Faction[]
+     * @return ArrayCollection|Faction[]
      */
-    public function getFaction(): Collection
+    public function getFaction(): ArrayCollection
     {
         return $this->faction;
     }
@@ -196,9 +190,9 @@ class Hero {
     }
 
     /**
-     * @return Collection|Specialisation[]
+     * @return ArrayCollection|Specialisation[]
      */
-    public function getSpecialisation(): Collection
+    public function getSpecialisation(): ArrayCollection
     {
         return $this->specialisation;
     }
@@ -227,9 +221,9 @@ class Hero {
     }
 
     /**
-     * @return Collection|Competence[]
+     * @return ArrayCollection|Competence[]
      */
-    public function getCompetences(): Collection
+    public function getCompetences(): ArrayCollection
     {
         return $this->competences;
     }
@@ -253,9 +247,9 @@ class Hero {
     }
 
     /**
-     * @return Collection|Capacite[]
+     * @return ArrayCollection|Capacite[]
      */
-    public function getCapacites(): Collection
+    public function getCapacites(): ArrayCollection
     {
         return $this->capacites;
     }
@@ -279,9 +273,9 @@ class Hero {
     }
 
     /**
-     * @return Collection|Peloton[]
+     * @return ArrayCollection|Peloton[]
      */
-    public function getArmee(): Collection
+    public function getArmee(): ArrayCollection
     {
         return $this->armee;
     }
@@ -305,9 +299,9 @@ class Hero {
     }
 
     /**
-     * @return Collection|Sort[]
+     * @return ArrayCollection|Sort[]
      */
-    public function getSortsDepart(): Collection
+    public function getSortsDepart(): ArrayCollection
     {
         return $this->sortsDepart;
     }

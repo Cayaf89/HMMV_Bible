@@ -9,7 +9,7 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <many-to-one  field="sorts"              target-entity="Sort"    mapped-by="magie"             />
+        <many-to-one  field="sorts"              target-entity="Sort"    inversed-by="magie"             />
         <many-to-many field="factionsPreference" target-entity="Faction" inversed-by="magiesPreferees" />
 
         <field name="nom"         type="string" />

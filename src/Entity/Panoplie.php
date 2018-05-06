@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Panoplie {
     
@@ -12,7 +12,7 @@ class Panoplie {
     private $description;
     
     public function __construct() {
-        $this->artefacts = new Collection();
+        $this->artefacts = new ArrayCollection();
     }
 
     public function getNom(): ?string

@@ -3,13 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
-/**
- * Description of Competence
- *
- * @author Alexi
- */
 class Competence {
     private $id;
     private $capacites;
@@ -20,8 +14,8 @@ class Competence {
     private $unique;
     
     public function __construct() {
-        $this->capacites = new Collection();
-        $this->heros     = new Collection();
+        $this->capacites = new ArrayCollection();
+        $this->heros     = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -78,9 +72,9 @@ class Competence {
     }
 
     /**
-     * @return Collection|Capacite[]
+     * @return ArrayCollection|Capacite[]
      */
-    public function getCapacites(): Collection
+    public function getCapacites(): ArrayCollection
     {
         return $this->capacites;
     }
@@ -104,9 +98,9 @@ class Competence {
     }
 
     /**
-     * @return Collection|Hero[]
+     * @return ArrayCollection|Hero[]
      */
-    public function getHeros(): Collection
+    public function getHeros(): ArrayCollection
     {
         return $this->heros;
     }

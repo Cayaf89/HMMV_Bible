@@ -3,24 +3,23 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class Ressource {
     
     private $id;
     private $artefacts;
     private $creatures;
-    private $batimentsDebloque;
+    private $batimentsDebloques;
     private $machinesDeGuerre;
     private $nom;
     private $quantite;
     
     public function __construct() {
-        $this->artefacts       = new Collection();
-        $this->creatures       = new Collection();
-        $this->machinesDeGuerre = new Collection();
-        $this->batiments       = new Collection();
-        $this->batimentsDebloque = new ArrayCollection();
+        $this->artefacts       = new ArrayCollection();
+        $this->creatures       = new ArrayCollection();
+        $this->machinesDeGuerre = new ArrayCollection();
+        $this->batiments       = new ArrayCollection();
+        $this->batimentsDebloques = new ArrayCollection();
     }
 
     public function getNom(): ?string
@@ -77,9 +76,9 @@ class Ressource {
     }
 
     /**
-     * @return Collection|Creature[]
+     * @return ArrayCollection|Creature[]
      */
-    public function getCreatures(): Collection
+    public function getCreatures(): ArrayCollection
     {
         return $this->creatures;
     }
@@ -103,9 +102,9 @@ class Ressource {
     }
 
     /**
-     * @return Collection|Batiment[]
+     * @return ArrayCollection|Batiment[]
      */
-    public function getBatiments(): Collection
+    public function getBatiments(): ArrayCollection
     {
         return $this->batiments;
     }
@@ -129,9 +128,9 @@ class Ressource {
     }
 
     /**
-     * @return Collection|Batiment[]
+     * @return ArrayCollection|Batiment[]
      */
-    public function getBatimentsDebloque(): Collection
+    public function getBatimentsDebloque(): ArrayCollection
     {
         return $this->batimentsDebloque;
     }

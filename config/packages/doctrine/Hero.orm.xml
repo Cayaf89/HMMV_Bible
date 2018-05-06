@@ -11,11 +11,11 @@
 
         <one-to-many  field="faction"        target-entity="Faction"         mapped-by="heros"  />
         <one-to-many  field="specialisation" target-entity="Specialisation"  mapped-by="heros"    />
-        <one-to-one   field="capaciteHero"   target-entity="CapaciteHero"    mapped-by="hero"    />
-        <many-to-many field="competences"    target-entity="Competence"      mapped-by="heros"    />
-        <many-to-many field="capacites"      target-entity="Capacite"        mapped-by="heros"    />
-        <many-to-many field="armee"          target-entity="Peloton"         mapped-by="heros"    />
-        <many-to-many field="sortsDepart"    target-entity="Sort"            mapped-by="heros"    />
+        <one-to-one   field="capaciteHero"   target-entity="CapaciteHero"    inversed-by="hero"    />
+        <many-to-many field="competences"    target-entity="Competence"      inversed-by="heros"    />
+        <many-to-many field="capacites"      target-entity="Capacite"        inversed-by="heros"    />
+        <many-to-many field="armee"          target-entity="Peloton"         inversed-by="heros"    />
+        <many-to-many field="sortsDepart"    target-entity="Sort"            inversed-by="heros"    />
 
         <field name="nom"               type="string"   />
         <field name="description"       type="text"     />

@@ -9,13 +9,13 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-one   field="competence"           target-entity="Competence"      mapped-by="faction"      />
-        <one-to-many  field="terrain"              target-entity="Terrain"         inversed-by="factions"   />
-        <many-to-one  field="villes"               target-entity="Ville"           mapped-by="faction"      />
-        <many-to-one  field="heros"                target-entity="Hero"            mapped-by="faction"      />
-        <many-to-one  field="creatures"            target-entity="Creature"        mapped-by="faction"      />
-        <many-to-many field="magiesPreferees"      target-entity="Magie"           mapped-by="factionsPreference"     />
-        <many-to-many field="specialisationsHero"  target-entity="Specialisation"  mapped-by="factionsHero" />
+        <one-to-one   field="competence"           target-entity="Competence"      inversed-by="faction"      />
+        <one-to-many  field="terrain"              target-entity="Terrain"         mapped-by="factions"   />
+        <many-to-one  field="villes"               target-entity="Ville"           inversed-by="faction"      />
+        <many-to-one  field="heros"                target-entity="Hero"            inversed-by="faction"      />
+        <many-to-one  field="creatures"            target-entity="Creature"        inversed-by="faction"      />
+        <many-to-many field="magiesPreferees"      target-entity="Magie"           inversed-by="factionsPreference"     />
+        <many-to-many field="specialisationsHero"  target-entity="Specialisation"  inversed-by="factionsHero" />
         <one-to-one   field="specialisationVille"  target-entity="Specialisation"  mapped-by="factionVille" />
  
         <field name="nomFaction"        type="string"   />

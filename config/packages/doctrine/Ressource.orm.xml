@@ -9,10 +9,10 @@
             <generator strategy="IDENTITY" />
         </id>
         
-        <many-to-one  field="artefacts"         target-entity="Artefact"        inversed-by="coutRessource"  />
-        <many-to-one  field="machinesDeGuerre"  target-entity="MachineDeGuerre" inversed-by="coutRessource"  />
-        <many-to-many field="creatures"         target-entity="Creature"        inversed-by="coutRessources" />
-        <many-to-many field="batimentsDebloque" target-entity="Batiment"        inversed-by="coutRessources" />
+        <many-to-one  field="artefacts"          target-entity="Artefact"        inversed-by="coutRessource"  />
+        <many-to-one  field="machinesDeGuerre"   target-entity="MachineDeGuerre" inversed-by="coutRessource"  />
+        <many-to-many field="creatures"          target-entity="Creature"        inversed-by="coutRessources" />
+        <many-to-many field="batimentsDebloques" target-entity="Batiment"        inversed-by="coutRessources" />
         
         <field name="nom"      type="string"   />
         <field name="quantite" type="smallint" />

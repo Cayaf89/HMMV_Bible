@@ -1,23 +1,80 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace App\Entity;
 
-/**
- * Description of MachineDeGuerre
- *
- * @author CocO J'te BeiZ
- */
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class MachineDeGuerre {
     
     private $id;
-    private $artefacts;
+    private $coutRessource;
     private $nom;
     private $description;
+
+    public function __construct()
+    {
+        $this->coutRessource = new Collection();
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return Collection|Ressource[]
+     */
+    public function getCoutRessource(): Collection
+    {
+        return $this->coutRessource;
+    }
+
+    public function addCoutRessource(Ressource $coutRessource): self
+    {
+        if (!$this->coutRessource->contains($coutRessource)) {
+            $this->coutRessource[] = $coutRessource;
+            $coutRessource->setMachinesDeGuerre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCoutRessource(Ressource $coutRessource): self
+    {
+        if ($this->coutRessource->contains($coutRessource)) {
+            $this->coutRessource->removeElement($coutRessource);
+            // set the owning side to null (unless already changed)
+            if ($coutRessource->getMachinesDeGuerre() === $this) {
+                $coutRessource->setMachinesDeGuerre(null);
+            }
+        }
+
+        return $this;
+    }
     
 }

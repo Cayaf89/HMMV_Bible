@@ -2,26 +2,22 @@
 
 namespace App\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-/**
- * Description of Competence
- *
- * @author Alexi
- */
-class Competence {
+class Sort {
+    
     private $id;
-    private $capacites;
-    private $heros;
-    private $faction;
     private $nom;
     private $description;
-    private $unique;
+    private $magie;
+    private $coutMana;
+    private $heros;
     
     public function __construct() {
-        $this->capacites = new Collection();
-        $this->heros     = new Collection();
+        $this->heros = new Collection();
+        $this->magie = new Collection();
     }
 
     public function getNom(): ?string
@@ -48,14 +44,14 @@ class Competence {
         return $this;
     }
 
-    public function getUnique(): ?bool
+    public function getCoutMana(): ?int
     {
-        return $this->unique;
+        return $this->coutMana;
     }
 
-    public function setUnique(bool $unique): self
+    public function setCoutMana(int $coutMana): self
     {
-        $this->unique = $unique;
+        $this->coutMana = $coutMana;
 
         return $this;
     }
@@ -65,39 +61,32 @@ class Competence {
         return $this->id;
     }
 
-    public function getFaction(): ?Faction
-    {
-        return $this->faction;
-    }
-
-    public function setFaction(?Faction $faction): self
-    {
-        $this->faction = $faction;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|Capacite[]
+     * @return Collection|Magie[]
      */
-    public function getCapacites(): Collection
+    public function getMagie(): Collection
     {
-        return $this->capacites;
+        return $this->magie;
     }
 
-    public function addCapacite(Capacite $capacite): self
+    public function addMagie(Magie $magie): self
     {
-        if (!$this->capacites->contains($capacite)) {
-            $this->capacites[] = $capacite;
+        if (!$this->magie->contains($magie)) {
+            $this->magie[] = $magie;
+            $magie->setSorts($this);
         }
 
         return $this;
     }
 
-    public function removeCapacite(Capacite $capacite): self
+    public function removeMagie(Magie $magie): self
     {
-        if ($this->capacites->contains($capacite)) {
-            $this->capacites->removeElement($capacite);
+        if ($this->magie->contains($magie)) {
+            $this->magie->removeElement($magie);
+            // set the owning side to null (unless already changed)
+            if ($magie->getSorts() === $this) {
+                $magie->setSorts(null);
+            }
         }
 
         return $this;

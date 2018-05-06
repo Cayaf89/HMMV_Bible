@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-class Semaine {
+class EstimationNbCreature {
     
     private $id;
     private $nom;
-    private $description;
+    private $quantite;
 
     public function getNom(): ?string
     {
@@ -20,14 +20,14 @@ class Semaine {
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getQuantite(): ?string
     {
-        return $this->description;
+        return $this->quantite;
     }
 
-    public function setDescription(string $description): self
+    public function setQuantite(string $quantite): self
     {
-        $this->description = $description;
+        $this->quantite = $quantite;
 
         return $this;
     }

@@ -5,16 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class MachineDeGuerre {
-    
     private $id;
     private $coutRessource;
     private $nom;
     private $description;
-
-    public function __construct()
-    {
-        $this->coutRessource = new ArrayCollection();
-    }
 
     public function getNom(): ?string
     {

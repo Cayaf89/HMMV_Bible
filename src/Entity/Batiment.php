@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Batiment {
-    
     private $id;
     private $nom;
     private $description;
@@ -17,13 +16,6 @@ class Batiment {
     private $creaturesProduites;
     private $coutRessources;
     
-    public function __construct() 
-    {
-        $this->coutRessources     = new ArrayCollection();
-        $this->creaturesProduites = new ArrayCollection();
-        $this->ville              = new ArrayCollection();
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;

@@ -3,8 +3,11 @@ security:
         in_memory:
             memory:
                 users:
-                    admin:
-                        password: 123
+                    cayaf:
+                        password: alalalei
+                        roles: 'ROLE_ADMIN'
+                    karma:
+                        password: YouDontEvenKnowWhatYoureThinkingAbout
                         roles: 'ROLE_ADMIN'
                         
     encoders:
@@ -18,6 +21,13 @@ security:
             provider: in_memory
             http_basic: ~
             anonymous: true
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: dashboard
+            logout:
+                path:   /logout
+                target: /login
 
             # activate different ways to authenticate
 

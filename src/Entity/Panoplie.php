@@ -2,18 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 class Panoplie {
-    
     private $id;
     private $artefacts;
     private $nom;
     private $description;
-    
-    public function __construct() {
-        $this->artefacts = new ArrayCollection();
-    }
 
     public function getNom(): ?string
     {

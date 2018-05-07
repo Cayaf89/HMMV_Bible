@@ -18,16 +18,6 @@ class Faction {
     private $typeHero;
     private $description;
     
-    public function __construct() 
-    {
-        $this->heros               = new ArrayCollection();
-        $this->magiesPreferees     = new ArrayCollection();
-        $this->specialisationsHero = new ArrayCollection();
-        $this->creatures           = new ArrayCollection();
-        $this->villes              = new ArrayCollection();
-        $this->terrain = new ArrayCollection();
-    }
-
     public function getNomFaction(): ?string
     {
         return $this->nomFaction;

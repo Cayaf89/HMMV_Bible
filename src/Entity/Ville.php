@@ -2,11 +2,9 @@
 
 namespace App\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Ville {
-    
     private $id;
     private $nom;
     private $description;
@@ -14,11 +12,6 @@ class Ville {
     private $specialisation;
     private $batiments;
     
-    public function __construct() {
-        $this->batiments = new ArrayCollection();
-        $this->faction = new ArrayCollection();
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;

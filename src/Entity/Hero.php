@@ -22,16 +22,6 @@ class Hero {
     private $mana;
     private $moral;
     private $chance;
-    
-    public function __construct()
-    {
-        $this->competences    = new ArrayCollection();
-        $this->capacites      = new ArrayCollection();
-        $this->armee          = new ArrayCollection();
-        $this->sortsDepart    = new ArrayCollection();
-        $this->faction        = new ArrayCollection();
-        $this->specialisation = new ArrayCollection();
-    }
 
     public function getNom(): ?string
     {

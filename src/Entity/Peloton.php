@@ -5,17 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Peloton {
-    
     private $id;
     private $heros;
     private $creature;
     private $quantite;
-    
-    public function __construct() 
-    {
-        $this->heros = new ArrayCollection();
-        $this->creature = new ArrayCollection();
-    }
 
     public function getQuantite(): ?int
     {

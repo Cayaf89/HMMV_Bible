@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Specialisation {
-    
     private $id;
     private $nom;
     private $description;
@@ -13,11 +12,6 @@ class Specialisation {
     private $factionVille;
     private $heros;
     
-    public function __construct() {
-        $this->heros        = new ArrayCollection();
-        $this->factionsHero = new ArrayCollection();
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;

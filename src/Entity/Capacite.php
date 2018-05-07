@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Capacite {
-    
     private $id;
     private $competenceRequise;
     private $capacitesRequises;
@@ -14,14 +13,6 @@ class Capacite {
     private $nom;
     private $description;
     
-    public function __construct() 
-    {
-        $this->capacitesRequises = new ArrayCollection();
-        $this->heros             = new ArrayCollection();
-        $this->competenceRequise = new ArrayCollection();
-        $this->capacitesDebloques = new ArrayCollection();
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;

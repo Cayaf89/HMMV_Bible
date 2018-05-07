@@ -5,16 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class CapaciteCreature {
-    
     private $id;
     private $creatures;
     private $nom;
     private $description;
-
-    public function __construct()
-    {
-        $this->creatures = new ArrayCollection();
-    }
     
     public function getId(): ?int
     {

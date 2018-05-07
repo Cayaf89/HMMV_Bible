@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Ressource {
-    
     private $id;
     private $artefacts;
     private $creatures;
@@ -13,14 +12,6 @@ class Ressource {
     private $machinesDeGuerre;
     private $nom;
     private $quantite;
-    
-    public function __construct() {
-        $this->artefacts       = new ArrayCollection();
-        $this->creatures       = new ArrayCollection();
-        $this->machinesDeGuerre = new ArrayCollection();
-        $this->batiments       = new ArrayCollection();
-        $this->batimentsDebloques = new ArrayCollection();
-    }
 
     public function getNom(): ?string
     {

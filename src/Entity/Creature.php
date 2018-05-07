@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Creature {
-    
     private $id;
     private $faction;
     private $batimentProducteur;
@@ -28,18 +27,8 @@ class Creature {
     private $croissance;
     private $moral;
     private $chance;
-
     private $coutRessources;
     
-    public function __construct() {
-        $this->faction       = new ArrayCollection();
-        $this->capacites     = new ArrayCollection();
-        $this->pelotons      = new ArrayCollection();
-        $this->coutRessource = new ArrayCollection();
-        $this->batimentProducteur = new ArrayCollection();
-        $this->coutRessources = new ArrayCollection();
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;

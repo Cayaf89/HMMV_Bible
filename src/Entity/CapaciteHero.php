@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 class CapaciteHero {
-    
     private $id;
     private $hero;
     private $nom;

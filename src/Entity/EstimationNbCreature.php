@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 class EstimationNbCreature {
-    
     private $id;
     private $nom;
     private $quantite;

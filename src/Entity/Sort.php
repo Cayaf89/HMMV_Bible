@@ -5,18 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Sort {
-    
     private $id;
     private $nom;
     private $description;
     private $magie;
     private $coutMana;
     private $heros;
-    
-    public function __construct() {
-        $this->heros = new ArrayCollection();
-        $this->magie = new ArrayCollection();
-    }
 
     public function getNom(): ?string
     {

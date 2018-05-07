@@ -12,11 +12,6 @@ class Competence {
     private $nom;
     private $description;
     private $unique;
-    
-    public function __construct() {
-        $this->capacites = new ArrayCollection();
-        $this->heros     = new ArrayCollection();
-    }
 
     public function getNom(): ?string
     {

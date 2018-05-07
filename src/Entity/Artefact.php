@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Artefact {
-    
     private $id;
     private $nom;
     private $description;
@@ -14,12 +13,6 @@ class Artefact {
     private $importance;
     private $panoplie;
     private $coutRessource;
-
-    public function __construct()
-    {
-        $this->panoplie      = new ArrayCollection();
-        $this->coutRessource = new ArrayCollection();
-    }
 
     public function getNom(): ?string
     {

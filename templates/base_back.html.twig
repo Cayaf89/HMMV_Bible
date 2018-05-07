@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="{{ asset('lib/onoffcanvas/onoffcanvas.css') }}">
         <link rel="stylesheet" href="{{ asset('lib/animate.css/animate.css') }}">
         {% block stylesheets %}{% endblock %}
+        <script src="{{ asset('lib/jquery/jquery.js') }}"></script>
+        <script src="{{ asset('lib/bootstrap/js/bootstrap.js') }}"></script>
     </head>
     <body {% block body_class %}{% endblock %}>
         <div id="top">
@@ -440,14 +442,13 @@
             <!-- /.modal-dialog -->
         </div>
                 
-        <script src="{{ asset('lib/jquery/jquery.js') }}"></script>
-        <script src="{{ asset('lib/bootstrap/js/bootstrap.js') }}"></script>
         <script src="{{ asset('lib/metismenu/metisMenu.js') }}"></script>
         <script src="{{ asset('lib/onoffcanvas/onoffcanvas.js') }}"></script>
         <script src="{{ asset('lib/screenfull/screenfull.js') }}"></script>
         {% block javascript_file %}{% endblock %}
         <script src="{{ asset('js/core.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/back.js') }}"></script>
         
         {% block javascript_prepare %}
             {# Exemple :
@@ -459,15 +460,15 @@
              # </script>
              #}
         {% endblock %}
+        
+        
 
         {% block javascripts %}
             {# Exemple :
              # <script type="application/javascript">
-             #  (function($) {
-             #      $(document).ready(function() {
+             #     $(document).ready(function() {
              #          $("#idExemple").val( fonctionExemple( 198, 222 ) );
-             #      });
-             #  })(jQuery);
+             #     });
              # <script>
              #}
         {% endblock %}

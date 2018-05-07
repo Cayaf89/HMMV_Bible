@@ -148,10 +148,7 @@ class Hero {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Faction[]
-     */
-    public function getFaction(): ArrayCollection
+    public function getFaction(): ?ArrayCollection
     {
         return $this->faction;
     }
@@ -179,10 +176,7 @@ class Hero {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Specialisation[]
-     */
-    public function getSpecialisation(): ArrayCollection
+    public function getSpecialisation(): ?ArrayCollection
     {
         return $this->specialisation;
     }
@@ -210,10 +204,7 @@ class Hero {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Competence[]
-     */
-    public function getCompetences(): ArrayCollection
+    public function getCompetences(): ?ArrayCollection
     {
         return $this->competences;
     }
@@ -236,10 +227,7 @@ class Hero {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Capacite[]
-     */
-    public function getCapacites(): ArrayCollection
+    public function getCapacites(): ?ArrayCollection
     {
         return $this->capacites;
     }
@@ -262,10 +250,7 @@ class Hero {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Peloton[]
-     */
-    public function getArmee(): ArrayCollection
+    public function getArmee(): ?ArrayCollection
     {
         return $this->armee;
     }
@@ -288,10 +273,7 @@ class Hero {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Sort[]
-     */
-    public function getSortsDepart(): ArrayCollection
+    public function getSortsDepart(): ?ArrayCollection
     {
         return $this->sortsDepart;
     }

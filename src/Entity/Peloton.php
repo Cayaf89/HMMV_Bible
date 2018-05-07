@@ -27,10 +27,7 @@ class Peloton {
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection|Creature[]
-     */
-    public function getCreature(): ArrayCollection
+    public function getCreature(): ?ArrayCollection
     {
         return $this->creature;
     }
@@ -58,10 +55,7 @@ class Peloton {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Hero[]
-     */
-    public function getHeros(): ArrayCollection
+    public function getHeros(): ?ArrayCollection
     {
         return $this->heros;
     }

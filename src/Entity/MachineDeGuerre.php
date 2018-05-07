@@ -39,10 +39,7 @@ class MachineDeGuerre {
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection|Ressource[]
-     */
-    public function getCoutRessource(): ArrayCollection
+    public function getCoutRessource(): ?ArrayCollection
     {
         return $this->coutRessource;
     }

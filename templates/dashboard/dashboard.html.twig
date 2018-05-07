@@ -2,91 +2,13 @@
 
 {% block body %}
     <div class="text-center">
-        <a class="quick-btn" href="{{ path("artefact_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Artéfacts</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("batiment_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Batîments</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("capacite_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Capacités</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("competence_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Compétences</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("creature_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Créatures</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("faction_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Factions</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("hero_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Héros</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("machine_de_guerre_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Machines</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("magie_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Magies</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("panoplie_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Panoplies</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("peloton_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Pelotons</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("ressource_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Ressources</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("semaine_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Semaines</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("sort_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Sorts</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("specialisation_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Spécialisations</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("terrain_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Terrains</span>
-            <span class="label label-success">-456</span>
-        </a>
-        <a class="quick-btn" href="{{ path("ville_index") }}">
-            <i class="fa fa-envelope fa-2x"></i>
-            <span>Villes</span>
-            <span class="label label-success">-456</span>
-        </a>
+        {% for quickLink in quickLinks %}        
+            <a class="quick-btn" href="{{ path(quickLink.slug~"_index") }}">
+                <i class="fa fa-{{ quickLink.fa }} fa-2x"></i>
+                <span>{{ quickLink.label }}</span>
+                <span class="label label-success">{{ quickLink.nb }}</span>
+            </a>
+        {% endfor %}
     </div>
 {% endblock %}
 

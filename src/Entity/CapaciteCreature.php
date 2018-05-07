@@ -39,10 +39,7 @@ class CapaciteCreature {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Creature[]
-     */
-    public function getCreatures(): ArrayCollection
+    public function getCreatures(): ?ArrayCollection
     {
         return $this->creatures;
     }

@@ -226,10 +226,7 @@ class Creature {
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection|Batiment[]
-     */
-    public function getBatimentProducteur(): ArrayCollection
+    public function getBatimentProducteur(): ?ArrayCollection
     {
         return $this->batimentProducteur;
     }
@@ -281,10 +278,7 @@ class Creature {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Capacite[]
-     */
-    public function getCapacites(): ArrayCollection
+    public function getCapacites(): ?ArrayCollection
     {
         return $this->capacites;
     }
@@ -307,10 +301,7 @@ class Creature {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Ressource[]
-     */
-    public function getCoutRessources(): ArrayCollection
+    public function getCoutRessources(): ?ArrayCollection
     {
         return $this->coutRessources;
     }

@@ -1,0 +1,39 @@
+{% extends "base_back.html.twig" %}
+
+{% form_theme form 'form/fields.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('lib/inputlimiter/jquery.inputlimiter.css') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Uniform.js/2.1.2/themes/default/css/uniform.default.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.3/jquery.tagsinput.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css">
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+{% block javascript_file %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Uniform.js/2.1.2/jquery.uniform.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.3/jquery.tagsinput.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.17/jquery.autosize.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.min.js"></script>
+    <script src="{{ asset('lib/inputlimiter/jquery.inputlimiter.js') }}"></script>
+    <script src="{{ asset('lib/validVal/js/jquery.validVal.min.js') }}"></script>
+    <script src="{{ asset('lib/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+        $(function() {
+            $(document).ready(function() {
+                Metis.formGeneral();
+            });
+        })(jQuery);
+    </script>
+{% endblock %}

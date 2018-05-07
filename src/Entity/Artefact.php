@@ -67,10 +67,7 @@ class Artefact {
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection|Panoplie[]
-     */
-    public function getPanoplie(): ArrayCollection
+    public function getPanoplie(): ?ArrayCollection
     {
         return $this->panoplie;
     }
@@ -98,10 +95,7 @@ class Artefact {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Ressource[]
-     */
-    public function getCoutRessource(): ArrayCollection
+    public function getCoutRessource(): ?ArrayCollection
     {
         return $this->coutRessource;
     }

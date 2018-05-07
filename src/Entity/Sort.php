@@ -53,10 +53,7 @@ class Sort {
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection|Magie[]
-     */
-    public function getMagie(): ArrayCollection
+    public function getMagie(): ?ArrayCollection
     {
         return $this->magie;
     }
@@ -84,10 +81,7 @@ class Sort {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Hero[]
-     */
-    public function getHeros(): ArrayCollection
+    public function getHeros(): ?ArrayCollection
     {
         return $this->heros;
     }

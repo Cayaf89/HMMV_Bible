@@ -81,10 +81,7 @@ class Batiment {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Ville[]
-     */
-    public function getVille(): ArrayCollection
+    public function getVille(): ?ArrayCollection
     {
         return $this->ville;
     }
@@ -124,10 +121,7 @@ class Batiment {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Ressource[]
-     */
-    public function getCoutRessources(): ArrayCollection
+    public function getCoutRessources(): ?ArrayCollection
     {
         return $this->coutRessources;
     }

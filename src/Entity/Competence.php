@@ -66,10 +66,7 @@ class Competence {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Capacite[]
-     */
-    public function getCapacites(): ArrayCollection
+    public function getCapacites(): ?ArrayCollection
     {
         return $this->capacites;
     }
@@ -92,10 +89,7 @@ class Competence {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Hero[]
-     */
-    public function getHeros(): ArrayCollection
+    public function getHeros(): ?ArrayCollection
     {
         return $this->heros;
     }

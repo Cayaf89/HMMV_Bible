@@ -89,10 +89,7 @@ class Faction {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Terrain[]
-     */
-    public function getTerrain(): ArrayCollection
+    public function getTerrain(): ?ArrayCollection
     {
         return $this->terrain;
     }
@@ -120,10 +117,7 @@ class Faction {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Hero[]
-     */
-    public function getHeros(): ArrayCollection
+    public function getHeros(): ?ArrayCollection
     {
         return $this->heros;
     }
@@ -151,10 +145,7 @@ class Faction {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Creature[]
-     */
-    public function getCreatures(): ArrayCollection
+    public function getCreatures(): ?ArrayCollection
     {
         return $this->creatures;
     }
@@ -194,10 +185,7 @@ class Faction {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Magie[]
-     */
-    public function getMagiesPreferees(): ArrayCollection
+    public function getMagiesPreferees(): ?ArrayCollection
     {
         return $this->magiesPreferees;
     }
@@ -220,10 +208,7 @@ class Faction {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Specialisation[]
-     */
-    public function getSpecialisationsHero(): ArrayCollection
+    public function getSpecialisationsHero(): ?ArrayCollection
     {
         return $this->specialisationsHero;
     }

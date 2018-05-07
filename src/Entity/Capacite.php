@@ -37,10 +37,7 @@ class Capacite {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Competence[]
-     */
-    public function getCompetenceRequise(): ArrayCollection
+    public function getCompetenceRequise(): ?ArrayCollection
     {
         return $this->competenceRequise;
     }
@@ -68,10 +65,7 @@ class Capacite {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Capacite[]
-     */
-    public function getCapacitesRequises(): ArrayCollection
+    public function getCapacitesRequises(): ?ArrayCollection
     {
         return $this->capacitesRequises;
     }
@@ -94,10 +88,7 @@ class Capacite {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Hero[]
-     */
-    public function getHeros(): ArrayCollection
+    public function getHeros(): ?ArrayCollection
     {
         return $this->heros;
     }
@@ -125,10 +116,7 @@ class Capacite {
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection|Capacite[]
-     */
-    public function getCapacitesDebloques(): ArrayCollection
+    public function getCapacitesDebloques(): ?ArrayCollection
     {
         return $this->capacitesDebloques;
     }

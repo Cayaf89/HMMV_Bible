@@ -71,10 +71,7 @@ class Specialisation {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Faction[]
-     */
-    public function getFactionsHero(): ArrayCollection
+    public function getFactionsHero(): ?ArrayCollection
     {
         return $this->factionsHero;
     }

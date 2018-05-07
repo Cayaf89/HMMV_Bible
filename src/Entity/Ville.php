@@ -41,10 +41,7 @@ class Ville {
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection|Faction[]
-     */
-    public function getFaction(): ArrayCollection
+    public function getFaction(): ?ArrayCollection
     {
         return $this->faction;
     }

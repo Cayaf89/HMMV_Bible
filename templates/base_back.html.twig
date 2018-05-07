@@ -30,7 +30,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="#" class="navbar-brand"><img src="{{ asset('img/logo.png') }}" alt=""></a>
+                        <a href="{{ path('dashboard') }}" class="navbar-brand"><img src="{{ asset('img/logo.png') }}" alt=""></a>
                     </header>
                     <div class="topnav">
                         <div class="btn-group">
@@ -91,26 +91,19 @@
                         <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{ asset('img/user.gif') }}">
                         <span class="label label-danger user-label">16</span>
                     </a>
-
                     <div class="media-body">
                         <h5 class="media-heading">{{ app.user.username }}</h5>
                         <ul class="list-unstyled user-info">
-                            <li><a href="">Administrateur</a></li>
-                            <li>Last Access : <br>
+                            <li>Dernière connection : <br>
                                 <small><i class="fa fa-calendar"></i>{{ 'now'|localizeddate('full', 'none') }}</small>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <ul id="menu" class="bg-blue dker">
+            <ul id="menu" class="bg-black dker">
                 <li class="nav-header">Menu</li>
                 <li class="nav-divider"></li>
-                <li class="">
-                    <a href="{{ path('dashboard') }}">
-                        <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-                    </a>
-                </li>
                 <li class="">
                     <a href="javascript:;">
                         <i class="fa fa-quidditch"></i>
@@ -147,7 +140,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-wolf-pack-battalion"></i>
+                        <i class="fa fa-band-aid"></i>
                         <span class="link-title">Capacités</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -164,7 +157,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-staylinked"></i>
+                        <i class="fa fa-bookmark"></i>
                         <span class="link-title">Compétences</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -198,7 +191,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-galactic-senate"></i>
+                        <i class="fa fa-address-book"></i>
                         <span class="link-title">Factions</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -232,7 +225,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-times fa-rotate-left fa-rotate-45"></i>
+                        <i class="fa fa-plus-square"></i>
                         <span class="link-title">Machines de guerre</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -266,7 +259,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-building "></i>
+                        <i class="fa fa-boxes"></i>
                         <span class="link-title">Panoplies</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -283,7 +276,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-building "></i>
+                        <i class="fa fa-users"></i>
                         <span class="link-title">Pelotons</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -300,7 +293,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-building "></i>
+                        <i class="fa fa-gem"></i>
                         <span class="link-title">Ressources</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -317,7 +310,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-building "></i>
+                        <i class="fa fa-calendar-alt"></i>
                         <span class="link-title">Semaines</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -351,7 +344,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-building "></i>
+                        <i class="fa fa-tachometer-alt"></i>
                         <span class="link-title">Spécialisations</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -368,7 +361,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-building "></i>
+                        <i class="fa fa-seedling"></i>
                         <span class="link-title">Terrains</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -385,7 +378,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-building "></i>
+                        <i class="fa fa-building"></i>
                         <span class="link-title">Villes</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -452,9 +445,9 @@
         <script src="{{ asset('lib/metismenu/metisMenu.js') }}"></script>
         <script src="{{ asset('lib/onoffcanvas/onoffcanvas.js') }}"></script>
         <script src="{{ asset('lib/screenfull/screenfull.js') }}"></script>
+        {% block javascript_file %}{% endblock %}
         <script src="{{ asset('js/core.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        {% block javascript_file %}{% endblock %}
         
         {% block javascript_prepare %}
             {# Exemple :

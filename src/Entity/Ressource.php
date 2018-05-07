@@ -66,10 +66,7 @@ class Ressource {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Creature[]
-     */
-    public function getCreatures(): ArrayCollection
+    public function getCreatures(): ?ArrayCollection
     {
         return $this->creatures;
     }
@@ -92,10 +89,7 @@ class Ressource {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Batiment[]
-     */
-    public function getBatiments(): ArrayCollection
+    public function getBatiments(): ?ArrayCollection
     {
         return $this->batiments;
     }
@@ -118,18 +112,15 @@ class Ressource {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Batiment[]
-     */
-    public function getBatimentsDebloque(): ArrayCollection
+    public function getBatimentsDebloques(): ?ArrayCollection
     {
-        return $this->batimentsDebloque;
+        return $this->batimentsDebloques;
     }
 
     public function addBatimentsDebloque(Batiment $batimentsDebloque): self
     {
-        if (!$this->batimentsDebloque->contains($batimentsDebloque)) {
-            $this->batimentsDebloque[] = $batimentsDebloque;
+        if (!$this->batimentsDebloques->contains($batimentsDebloque)) {
+            $this->batimentsDebloques[] = $batimentsDebloque;
         }
 
         return $this;
@@ -137,8 +128,8 @@ class Ressource {
 
     public function removeBatimentsDebloque(Batiment $batimentsDebloque): self
     {
-        if ($this->batimentsDebloque->contains($batimentsDebloque)) {
-            $this->batimentsDebloque->removeElement($batimentsDebloque);
+        if ($this->batimentsDebloques->contains($batimentsDebloque)) {
+            $this->batimentsDebloques->removeElement($batimentsDebloque);
         }
 
         return $this;

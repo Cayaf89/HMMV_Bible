@@ -52,10 +52,7 @@ class Magie {
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Faction[]
-     */
-    public function getFactionsPreference(): ArrayCollection
+    public function getFactionsPreference(): ?ArrayCollection
     {
         return $this->factionsPreference;
     }

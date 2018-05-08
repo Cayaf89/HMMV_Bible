@@ -120,7 +120,7 @@ nav-btn {
 .fixed-action-btn a.link-floating {
     opacity: 0;
     transform: scale(0.4);
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .fixed-action-btn a.link-floating.easeIn {

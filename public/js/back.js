@@ -17,7 +17,7 @@ var animateOutFAB = function ( btn ) {
     var interval = setInterval(function(){
         if( $(varBtn).hasClass('active') );
             $(varBtn).removeClass('active');
-        clearInterval(interval)
-    }, 500);
+        clearInterval(interval);
+    }, 420);
     
 };

@@ -3,8 +3,8 @@
 </a>
 <ul class="list-unstyled fixed-action-ul">
 {% for navLink in navLinks %}
-    <li class="{{ loop.first ? 'col-md-4 col-md-offset-4':'col-md-4' }}">    
-        <a class="btn-floating link-floating" href="{{ path(navLink.slug~"_index") }}">
+    <li class="{{ loop.first ? 'col-xs-4 col-xs-offset-4':'col-xs-4' }}">    
+        <a class="btn-floating link-floating" href="{{ path(navLink.slug~"_index") }}" style="transition-delay: {{ 0.34-(loop.index0/50) }}s;">
             <i class="material-icons" style="background-image: url('{{ asset('img/icons/'~navLink.slug~'.png') }}');" title="{{ navLink.label }}" ></i>
         </a>
     </li>

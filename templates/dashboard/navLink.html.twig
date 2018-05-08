@@ -1,0 +1,9 @@
+<div class="text-center">
+    {% for navLink in navLinks %}        
+        <a class="nav-btn" href="{{ path(navLink.slug~"_index") }}">
+            <span>{{ navLink.label }}</span>
+        </a>
+    {% endfor %}
+    
+    {% block fab %}{% endblock %}
+</div>

@@ -4,7 +4,7 @@
     <div class="text-center">
         {% for quickLink in quickLinks %}        
             <a class="quick-btn" href="{{ path(quickLink.slug~"_index") }}">
-                <i class="fa fa-{{ quickLink.fa }} fa-2x"></i>
+                <img src="{{ asset('img/icons/'~quickLink.slug~'.png') }}" class="quickLinks">
                 <span>{{ quickLink.label }}</span>
                 <span class="label label-success">{{ quickLink.nb }}</span>
             </a>

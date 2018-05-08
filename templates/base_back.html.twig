@@ -181,7 +181,7 @@
             $(document).ready(function() {
                 var isOpening = false;
                 $('#fab').on( 'click', function (evt) {
-                    if( !$("#fab").hasClass('active') ) {
+                    if( !$("#fab").hasClass('active') && !$(evt.target).hasClass('btn-left-tab') ) {
                         isOpening = true;
                         animateInFAB($("#fab"));
                     }

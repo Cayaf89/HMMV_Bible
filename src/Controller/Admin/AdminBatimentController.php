@@ -43,10 +43,11 @@ class AdminBatimentController extends Controller
             return $this->redirectToRoute('batiment_index');
         }
 
-        return $this->render('batiment/new.html.twig', [
-            'batiment' => $batiment,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $batiment,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

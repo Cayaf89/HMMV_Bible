@@ -43,10 +43,11 @@ class AdminMagieController extends Controller
             return $this->redirectToRoute('magie_index');
         }
 
-        return $this->render('magie/new.html.twig', [
-            'magie' => $magie,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $magie,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminMagieController extends Controller
             return $this->redirectToRoute('magie_edit', ['id' => $magie->getId()]);
         }
 
-        return $this->render('magie/edit.html.twig', [
-            'magie' => $magie,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $magie,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

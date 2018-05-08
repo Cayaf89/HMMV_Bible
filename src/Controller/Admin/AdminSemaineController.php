@@ -43,10 +43,11 @@ class AdminSemaineController extends Controller
             return $this->redirectToRoute('semaine_index');
         }
 
-        return $this->render('semaine/new.html.twig', [
-            'semaine' => $semaine,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $semaine,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminSemaineController extends Controller
             return $this->redirectToRoute('semaine_edit', ['id' => $semaine->getId()]);
         }
 
-        return $this->render('semaine/edit.html.twig', [
-            'semaine' => $semaine,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $semaine,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

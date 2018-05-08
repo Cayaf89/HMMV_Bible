@@ -43,10 +43,11 @@ class AdminCompetenceController extends Controller
             return $this->redirectToRoute('competence_index');
         }
 
-        return $this->render('competence/new.html.twig', [
-            'competence' => $competence,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $competence,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminCompetenceController extends Controller
             return $this->redirectToRoute('competence_edit', ['id' => $competence->getId()]);
         }
 
-        return $this->render('competence/edit.html.twig', [
-            'competence' => $competence,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $competence,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

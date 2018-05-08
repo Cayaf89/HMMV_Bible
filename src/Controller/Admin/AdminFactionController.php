@@ -43,10 +43,11 @@ class AdminFactionController extends Controller
             return $this->redirectToRoute('faction_index');
         }
 
-        return $this->render('faction/new.html.twig', [
-            'faction' => $faction,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $faction,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminFactionController extends Controller
             return $this->redirectToRoute('faction_edit', ['id' => $faction->getId()]);
         }
 
-        return $this->render('faction/edit.html.twig', [
-            'faction' => $faction,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $faction,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

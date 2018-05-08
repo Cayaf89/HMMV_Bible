@@ -43,10 +43,11 @@ class AdminTerrainController extends Controller
             return $this->redirectToRoute('terrain_index');
         }
 
-        return $this->render('terrain/new.html.twig', [
-            'terrain' => $terrain,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $terrain,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminTerrainController extends Controller
             return $this->redirectToRoute('terrain_edit', ['id' => $terrain->getId()]);
         }
 
-        return $this->render('terrain/edit.html.twig', [
-            'terrain' => $terrain,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $terrain,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

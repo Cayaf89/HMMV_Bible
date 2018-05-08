@@ -43,10 +43,11 @@ class AdminPanoplieController extends Controller
             return $this->redirectToRoute('panoplie_index');
         }
 
-        return $this->render('panoplie/new.html.twig', [
-            'panoplie' => $panoplie,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $panoplie,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminPanoplieController extends Controller
             return $this->redirectToRoute('panoplie_edit', ['id' => $panoplie->getId()]);
         }
 
-        return $this->render('panoplie/edit.html.twig', [
-            'panoplie' => $panoplie,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $panoplie,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

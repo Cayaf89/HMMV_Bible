@@ -43,10 +43,11 @@ class AdminHeroController extends Controller
             return $this->redirectToRoute('hero_index');
         }
 
-        return $this->render('hero/new.html.twig', [
-            'hero' => $hero,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $hero,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminHeroController extends Controller
             return $this->redirectToRoute('hero_edit', ['id' => $hero->getId()]);
         }
 
-        return $this->render('hero/edit.html.twig', [
-            'hero' => $hero,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $hero,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

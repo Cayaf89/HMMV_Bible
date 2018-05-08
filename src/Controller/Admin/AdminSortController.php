@@ -43,10 +43,11 @@ class AdminSortController extends Controller
             return $this->redirectToRoute('sort_index');
         }
 
-        return $this->render('sort/new.html.twig', [
-            'sort' => $sort,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $sort,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminSortController extends Controller
             return $this->redirectToRoute('sort_edit', ['id' => $sort->getId()]);
         }
 
-        return $this->render('sort/edit.html.twig', [
-            'sort' => $sort,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $sort,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

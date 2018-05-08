@@ -14,6 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminArtefactController extends Controller
 {
+    private $twig_params = [
+        'label' => 'Artéfact',
+        'slug' => 'artefact'        
+    ];
+    
     /**
      * @Route("/", name="artefact_index", methods="GET")
      */
@@ -43,10 +48,11 @@ class AdminArtefactController extends Controller
             return $this->redirectToRoute('artefact_index');
         }
 
-        return $this->render('artefact/new.html.twig', [
-            'artefact' => $artefact,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $artefact,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -70,11 +76,12 @@ class AdminArtefactController extends Controller
 
             return $this->redirectToRoute('artefact_edit', ['id' => $artefact->getId()]);
         }
-
-        return $this->render('artefact/edit.html.twig', [
-            'artefact' => $artefact,
-            'form' => $form->createView(),
-        ]);
+        
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $artefact,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

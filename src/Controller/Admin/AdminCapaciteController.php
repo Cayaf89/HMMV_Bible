@@ -43,10 +43,11 @@ class AdminCapaciteController extends Controller
             return $this->redirectToRoute('capacite_index');
         }
 
-        return $this->render('capacite/new.html.twig', [
-            'capacite' => $capacite,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $capacite,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,11 +72,11 @@ class AdminCapaciteController extends Controller
             return $this->redirectToRoute('capacite_edit', ['id' => $capacite->getId()]);
         }
 
-        return $this->render('capacite/edit.html.twig', [
-            'capacite' => $capacite,
-            'form' => $form->createView(),
-        ]);
-    }
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $capacite,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));    }
 
     /**
      * @Route("/{id}", name="capacite_delete", methods="DELETE")

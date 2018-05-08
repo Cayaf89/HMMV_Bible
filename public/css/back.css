@@ -1,3 +1,7 @@
+table tbody tr.active {
+    background-color: darkgray;
+}
+
 nav-btn {
     width: 50px;
     height: 50px;
@@ -93,8 +97,15 @@ nav-btn {
 }
 
 .fixed-action-btn ul.left-fab {
-    left: -125px;
+    left: -180px;
     bottom: -5px;
+    visibility: visible;
+}
+
+.fixed-action-btn ul.left-fab a.link-floating {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.5s;
 }
 
 .fixed-action-btn ul li {
@@ -132,22 +143,42 @@ nav-btn {
     width: 165px;
 }
 
+.fixed-action-ul a.link-floating {
+    opacity: 0;
+    transform: scale(0.4);
+    transition: all 0.3s;
+}
+
+.fixed-action-ul a.link-floating.easeIn {
+    opacity: 1;
+    transform: scale(1);
+}
+
 #fab-save {
-    background-color: white;
+    background-color: forestgreen;
 }
 
 #fab-cancel {
-    background-color: white;
+    background-color: graytext;
 }
 
-#fab-save i {
-    color: forestgreen;
+#fab-delete {
+    background-color: firebrick;
 }
 
-#fab-cancel i {
-    color: firebrick;
+#fab-edit {
+    background-color: burlywood;
+}
+
+#fab-show {
+    background-color: lightskyblue;
+}
+
+#fab-new {
+    background-color: forestgreen;
 }
 
 .left-fab i {
-    font-size: 51px;
+    font-size: 30px;
+    color: white;
 }

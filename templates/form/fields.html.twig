@@ -20,7 +20,7 @@
 {%- endblock form_widget_simple -%}
 
 {%- block form_widget_compound -%}
-    <div class="form-group" {{ block('widget_container_attributes') }}>
+    <div class="form-group row" {{ block('widget_container_attributes') }}>
         {{- block('form_rows') -}}
         {{- form_rest(form) -}}
     </div>
@@ -48,7 +48,7 @@
 {%- endblock choice_widget -%}
 
 {%- block choice_widget_expanded -%}
-    <div class="form-group"{{ block('widget_container_attributes') }}>
+    <div class="form-group row"{{ block('widget_container_attributes') }}>
     {%- for child in form %}
         <div class="row">
             {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
@@ -329,14 +329,14 @@
     {%- if help is defined and help is not empty -%}
         {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
     {%- endif -%}
-    <div class="form-group">
+    <div class="form-group row">
         {{- form_label(form) -}}
         {{- form_widget(form, widget_attr) -}}
     </div>
 {%- endblock form_row -%}
 
 {%- block button_row -%}
-    <div class="form-group">
+    <div class="form-group row">
         {{- form_widget(form) -}}
     </div>
 {%- endblock button_row -%}

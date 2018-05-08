@@ -43,10 +43,11 @@ class AdminCreatureController extends Controller
             return $this->redirectToRoute('creature_index');
         }
 
-        return $this->render('creature/new.html.twig', [
-            'creature' => $creature,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $creature,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminCreatureController extends Controller
             return $this->redirectToRoute('creature_edit', ['id' => $creature->getId()]);
         }
 
-        return $this->render('creature/edit.html.twig', [
-            'creature' => $creature,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $creature,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

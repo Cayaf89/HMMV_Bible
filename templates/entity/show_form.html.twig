@@ -11,22 +11,26 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css">
     <link rel="stylesheet" href="{{ asset('lib/inputlimiter/jquery.inputlimiter.css') }}">
-    <link rel="stylesheet" href="{{ asset('lib/pagedown-bootstrap/css/jquery.pagedown-bootstrap.css') }}">
 {% endblock %}
 
 {% block body %}
 {% endblock %}
 
 {% block fab %}
-    <ul class="list-unstyled fixed-action-ul left-fab">
-        <li class="col-md-4">    
-            <a class="btn-floating link-floating" id="fab-cancel" data-url="">
-                <i class="fa fa-times-circle" title="Annuler" ></i>
+    <ul class="list-unstyled fixed-action-ul left-fab btn-left-tab">
+        <li class="col-xs-4 btn-left-tab">    
+            <a class="btn-floating link-floating btn-left-tab" id="fab-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+                <i class="fa fa-trash-alt btn-left-tab" title="Supprimer" ></i>
             </a>
         </li>
-        <li class="col-md-4">    
-            <a class="btn-floating link-floating" id="fab-save" data-id="">
-                <i class="fa fa-check-circle" title="Valider" ></i>
+        <li class="col-xs-4 btn-left-tab" id='li-cancel'>    
+            <a class="btn-floating link-floating btn-left-tab" id="fab-cancel">
+                <i class="fa fa-times-circle btn-left-tab" title="Annuler" ></i>
+            </a>
+        </li>
+        <li class="col-xs-4 btn-left-tab">    
+            <a class="btn-floating link-floating btn-left-tab" id="fab-save">
+                <i class="fa fa-check-circle btn-left-tab" title="Valider" ></i>
             </a>
         </li>
     </ul>
@@ -42,8 +46,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.10/ckeditor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/epiceditor/0.2.2/js/epiceditor.min.js"></script>
-    <script src="{{ asset('lib/pagedown-bootstrap/js/jquery.pagedown-bootstrap.combined.min.js') }}"></script>
     <script src="{{ asset('lib/inputlimiter/jquery.inputlimiter.js') }}"></script>
     <script src="{{ asset('lib/validVal/js/jquery.validVal.min.js') }}"></script>
     <script src="{{ asset('lib/jquery-validation/jquery.validate.js') }}"></script>
@@ -54,13 +56,9 @@
         $(document).ready(function() {
             Metis.formWysiwyg();
             Metis.formValidation();
-            $('#fab-save').click(function () {
-               $( $(this).data('id') ).submit(); 
-            });
-            $('#fab-cancel').click(function () {
-               $( $(this).data('id') ).attr( 'action', $(this).data('url') );
-               $( $(this).data('id') ).submit(); 
-            });
         });
     </script>
+    
+{% block javascript_child %}
+{% endblock %}
 {% endblock %}

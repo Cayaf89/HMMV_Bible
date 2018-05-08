@@ -43,10 +43,11 @@ class AdminSpecialisationController extends Controller
             return $this->redirectToRoute('specialisation_index');
         }
 
-        return $this->render('specialisation/new.html.twig', [
-            'specialisation' => $specialisation,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $specialisation,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminSpecialisationController extends Controller
             return $this->redirectToRoute('specialisation_edit', ['id' => $specialisation->getId()]);
         }
 
-        return $this->render('specialisation/edit.html.twig', [
-            'specialisation' => $specialisation,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $specialisation,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

@@ -43,10 +43,11 @@ class AdminVilleController extends Controller
             return $this->redirectToRoute('ville_index');
         }
 
-        return $this->render('ville/new.html.twig', [
-            'ville' => $ville,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $ville,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminVilleController extends Controller
             return $this->redirectToRoute('ville_edit', ['id' => $ville->getId()]);
         }
 
-        return $this->render('ville/edit.html.twig', [
-            'ville' => $ville,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $ville,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

@@ -1,0 +1,37 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}MachineDeGuerre index{% endblock %}
+
+{% block body %}
+    <h1>MachineDeGuerre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for machine_de_guerre in machine_de_guerres %}
+            <tr>
+                <td>{{ machine_de_guerre.nom }}</td>
+                <td>{{ machine_de_guerre.description }}</td>
+                <td>{{ machine_de_guerre.id }}</td>
+                <td>
+                    <a href="{{ path('machine_de_guerre_show', {'id': machine_de_guerre.id}) }}">show</a>
+                    <a href="{{ path('machine_de_guerre_edit', {'id': machine_de_guerre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('machine_de_guerre_new') }}">Create new</a>
+{% endblock %}

@@ -43,10 +43,11 @@ class AdminPelotonController extends Controller
             return $this->redirectToRoute('peloton_index');
         }
 
-        return $this->render('peloton/new.html.twig', [
-            'peloton' => $peloton,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $peloton,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminPelotonController extends Controller
             return $this->redirectToRoute('peloton_edit', ['id' => $peloton->getId()]);
         }
 
-        return $this->render('peloton/edit.html.twig', [
-            'peloton' => $peloton,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $peloton,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

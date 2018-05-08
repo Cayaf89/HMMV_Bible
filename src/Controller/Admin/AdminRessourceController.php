@@ -43,10 +43,11 @@ class AdminRessourceController extends Controller
             return $this->redirectToRoute('ressource_index');
         }
 
-        return $this->render('ressource/new.html.twig', [
-            'ressource' => $ressource,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $ressource,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminRessourceController extends Controller
             return $this->redirectToRoute('ressource_edit', ['id' => $ressource->getId()]);
         }
 
-        return $this->render('ressource/edit.html.twig', [
-            'ressource' => $ressource,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $ressource,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

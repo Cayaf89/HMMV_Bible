@@ -43,10 +43,11 @@ class AdminMachineDeGuerreController extends Controller
             return $this->redirectToRoute('machine_de_guerre_index');
         }
 
-        return $this->render('machine_de_guerre/new.html.twig', [
-            'machine_de_guerre' => $machineDeGuerre,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $machineDeGuerre,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**
@@ -71,10 +72,11 @@ class AdminMachineDeGuerreController extends Controller
             return $this->redirectToRoute('machine_de_guerre_edit', ['id' => $machineDeGuerre->getId()]);
         }
 
-        return $this->render('machine_de_guerre/edit.html.twig', [
-            'machine_de_guerre' => $machineDeGuerre,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('form/form.html.twig', array_merge([
+            'object'   => $machineDeGuerre,
+            'form'     => $form->createView()
+        ], 
+        $this->twig_params));
     }
 
     /**

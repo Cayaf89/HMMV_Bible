@@ -1,0 +1,23 @@
+<ul id="menu" class="bg-black dker">
+    <li class="nav-header">Menu</li>
+    <li class="nav-divider"></li>
+    {% for menuLink in menuLinks %}        
+        <li class="">
+            <a href="javascript:;">
+                <img src="{{ asset('img/icons/'~menuLink.slug~'.png') }}" class="link-img">
+                <span class="link-title">{{ menuLink.label }}</span>
+                <span class="fa arrow"></span>
+            </a>
+            <ul class="collapse">
+                <li>
+                    <a href="{{ path(menuLink.slug~"_index") }}">
+                    <i class="fa fa-list"></i>&nbsp; Liste </a>
+                </li>
+                <li>
+                    <a href="{{ path(menuLink.slug~"_new") }}">
+                    <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
+                </li>
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ asset('lib/metismenu/metisMenu.css') }}">
         <link rel="stylesheet" href="{{ asset('lib/onoffcanvas/onoffcanvas.css') }}">
         <link rel="stylesheet" href="{{ asset('lib/animate.css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/back.css') }}">
         {% block stylesheets %}{% endblock %}
         <script src="{{ asset('lib/jquery/jquery.js') }}"></script>
         <script src="{{ asset('lib/bootstrap/js/bootstrap.js') }}"></script>
@@ -103,299 +104,7 @@
                     </div>
                 </div>
             </div>
-            <ul id="menu" class="bg-black dker">
-                <li class="nav-header">Menu</li>
-                <li class="nav-divider"></li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-quidditch"></i>
-                        <span class="link-title">Artéfacts</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("artefact_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("artefact_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-home"></i>
-                        <span class="link-title">Batîments</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("batiment_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("batiment_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-band-aid"></i>
-                        <span class="link-title">Capacités</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("capacite_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("capacite_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-bookmark"></i>
-                        <span class="link-title">Compétences</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("competence_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("competence_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-bug"></i>
-                        <span class="link-title">Créatures</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("creature_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("creature_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-address-book"></i>
-                        <span class="link-title">Factions</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("faction_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("faction_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-user-astronaut"></i>
-                        <span class="link-title">Héros</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("hero_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("hero_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-plus-square"></i>
-                        <span class="link-title">Machines de guerre</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("machine_de_guerre_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("machine_de_guerre_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span class="link-title">Magies</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("magie_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("artefact_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-boxes"></i>
-                        <span class="link-title">Panoplies</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("panoplie_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("panoplie_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-users"></i>
-                        <span class="link-title">Pelotons</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("peloton_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("peloton_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-gem"></i>
-                        <span class="link-title">Ressources</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("ressource_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("ressource_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-calendar-alt"></i>
-                        <span class="link-title">Semaines</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("semaine_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("semaine_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-star"></i>
-                        <span class="link-title">Sorts</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("sort_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("sort_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-tachometer-alt"></i>
-                        <span class="link-title">Spécialisations</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("specialisation_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("specialisation_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-seedling"></i>
-                        <span class="link-title">Terrains</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("terrain_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("terrain_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-building"></i>
-                        <span class="link-title">Villes</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="collapse">
-                        <li>
-                            <a href="{{ path("ville_index") }}">
-                            <i class="fa fa-list"></i>&nbsp; Liste </a>
-                        </li>
-                        <li>
-                            <a href="{{ path("ville_new") }}">
-                            <i class="fa fa-plus"></i>&nbsp; Ajouter </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            {{ render(url('get_menu_link')) }}
         </div>
                             
         <div id="content">
@@ -412,9 +121,7 @@
             {% endblock %}
         </div>
         
-        <div class="fab" id="fab">
-            {{ render(url('get_nav_link')) }}
-        </div>
+        {{ render(url('get_nav_link')) }}
         
         <footer class="Footer bg-dark dker">
             <p>2018 &copy; Cayaf & Karma v0.0.10</p>
@@ -449,6 +156,7 @@
         <script src="{{ asset('lib/metismenu/metisMenu.js') }}"></script>
         <script src="{{ asset('lib/onoffcanvas/onoffcanvas.js') }}"></script>
         <script src="{{ asset('lib/screenfull/screenfull.js') }}"></script>
+        <script src="{{ asset('lib/jquery/jquery-ui.min.js') }}"></script>
         {% block javascript_file %}{% endblock %}
         <script src="{{ asset('js/core.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
@@ -465,7 +173,23 @@
              #}
         {% endblock %}
         
-        
+        <script type="application/javascript">
+            $(document).ready(function() {
+                $('#fab').on({
+                    mouseenter: function (evt) {
+                        animateInFAB($("#fab"));
+                    },
+                    mouseleave: function (evt) {
+                        if( $("a.btn-floating:hover").length === 0 )
+                            animateOutFAB($("#fab"));
+                    }
+                });
+                $('.btn-floating').on( 'mouseleave', function (evt) {
+                    if( $("a.btn-floating:hover").length === 0 )
+                        animateOutFAB($("#fab"));
+                });
+            });
+        </script>
 
         {% block javascripts %}
             {# Exemple :

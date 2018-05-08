@@ -1,9 +1,15 @@
-<div class="text-center">
-    {% for navLink in navLinks %}        
-        <a class="nav-btn" href="{{ path(navLink.slug~"_index") }}">
-            <span>{{ navLink.label }}</span>
-        </a>
+<div class="fixed-action-btn direction-top" id="fab">
+    <a class="btn-floating red">
+        <i class="fa fa-bars fa-3x"></i>
+    </a>
+    <ul>
+    {% for navLink in navLinks %}
+        <li>    
+            <a class="btn-floating link-floating" href="{{ path(navLink.slug~"_index") }}">
+                <i class="material-icons" style="background-image: url('{{ asset('img/icons/'~navLink.slug~'.png') }}');" title="{{ navLink.label }}" ></i>
+            </a>
+        </li>
     {% endfor %}
-    
+    </ul>
     {% block fab %}{% endblock %}
 </div>

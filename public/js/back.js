@@ -1,40 +1,23 @@
-function toggleActionFloatingMenu(btn) {
+var animateInFAB = function ( btn ) {
+    var varBtn = $(btn);
+    if( !$(varBtn).hasClass('active') )
+        $(varBtn).addClass('active');
+    $("div.fixed-action-btn ul li a.btn-floating").each(function () {
+        if( !$(this).hasClass('easeIn') )
+            $(this).addClass('easeIn');
+    });
+};
 
-    $this = btn;
-    if ($this.hasClass('active') === false) {
-        $this.addClass('active');
-        $this.find('ul .btn-floating').velocity({
-            scaleY: ".4",
-            scaleX: ".4",
-            translateY: "40px"
-        }, {
-            duration: 0
-        });
-
-        var time = 0;
-        $this.find('ul .btn-floating').reverse().each(function () {
-            $(this).velocity({
-                opacity: "1",
-                scaleX: "1",
-                scaleY: "1",
-                translateY: "0"
-            }, {
-                duration: 80,
-                delay: time
-            });
-            time += 40;
-        });
-    } else {
-        $this.removeClass('active');
-        var time = 0;
-        $this.find('ul .btn-floating').velocity("stop", true);
-        $this.find('ul .btn-floating').velocity({
-            opacity: "0",
-            scaleX: ".4",
-            scaleY: ".4",
-            translateY: "40px"
-        }, {
-            duration: 80
-        });
-    }
-}
+var animateOutFAB = function ( btn ) {
+    var varBtn = $(btn);
+    $("div.fixed-action-btn ul li a.btn-floating").each(function () {
+        if( $(this).hasClass('easeIn') )
+            $(this).removeClass('easeIn');
+    });
+    var interval = setInterval(function(){
+        if( $(varBtn).hasClass('active') );
+            $(varBtn).removeClass('active');
+        clearInterval(interval)
+    }, 500);
+    
+};

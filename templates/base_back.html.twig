@@ -121,8 +121,12 @@
             {% endblock %}
         </div>
         
-        {{ render(url('get_nav_link')) }}
-        
+        <div class="fixed-action-btn direction-top" id="fab">
+            {{ render(url('get_nav_link')) }}
+            {% block fab %}
+            {% endblock %}
+            
+        </div>
         <footer class="Footer bg-dark dker">
             <p>2018 &copy; Cayaf & Karma v0.0.10</p>
         </footer>
@@ -175,18 +179,21 @@
         
         <script type="application/javascript">
             $(document).ready(function() {
-                $('#fab').on({
-                    mouseenter: function (evt) {
+                var isOpening = false;
+                $('#fab').on( 'click', function (evt) {
+                    if( !$("#fab").hasClass('active') ) {
+                        isOpening = true;
                         animateInFAB($("#fab"));
-                    },
-                    mouseleave: function (evt) {
-                        if( $("a.btn-floating:hover").length === 0 )
-                            animateOutFAB($("#fab"));
                     }
                 });
-                $('.btn-floating').on( 'mouseleave', function (evt) {
-                    if( $("a.btn-floating:hover").length === 0 )
+                $(document).on( 'click', function (evt) {
+                    if( $("#fab.active") && !isOpening ) {
+                        isOpening = false;
                         animateOutFAB($("#fab"));
+                    }
+                    else if( isOpening ) {
+                        isOpening = false;
+                    }
                 });
             });
         </script>

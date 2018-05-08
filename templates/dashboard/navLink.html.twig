@@ -1,15 +1,12 @@
-<div class="fixed-action-btn direction-top" id="fab">
-    <a class="btn-floating red">
-        <i class="fa fa-bars fa-3x"></i>
-    </a>
-    <ul>
-    {% for navLink in navLinks %}
-        <li>    
-            <a class="btn-floating link-floating" href="{{ path(navLink.slug~"_index") }}">
-                <i class="material-icons" style="background-image: url('{{ asset('img/icons/'~navLink.slug~'.png') }}');" title="{{ navLink.label }}" ></i>
-            </a>
-        </li>
-    {% endfor %}
-    </ul>
-    {% block fab %}{% endblock %}
-</div>
+<a class="btn-floating red hamburger">
+    <i class="fa fa-bars fa-2x hamburger"></i>
+</a>
+<ul class="list-unstyled fixed-action-ul">
+{% for navLink in navLinks %}
+    <li class="{{ loop.first ? 'col-md-4 col-md-offset-4':'col-md-4' }}">    
+        <a class="btn-floating link-floating" href="{{ path(navLink.slug~"_index") }}">
+            <i class="material-icons" style="background-image: url('{{ asset('img/icons/'~navLink.slug~'.png') }}');" title="{{ navLink.label }}" ></i>
+        </a>
+    </li>
+{% endfor %}
+</ul>

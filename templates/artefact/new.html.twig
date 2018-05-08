@@ -7,5 +7,15 @@
 
     {{ include('artefact/_form.html.twig') }}
 
-    <a href="{{ path('artefact_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        $(document).ready(function() {
+            $('#fab-save').data('id', 'block-validate');
+            $('#fab-cancel').data('id','block-validate');
+            $('#fab-cancel').data('url', '{{ path('artefact_index') }}');
+        });
+    </script>
 {% endblock %}

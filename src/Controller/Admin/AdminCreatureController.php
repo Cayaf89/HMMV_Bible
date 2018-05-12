@@ -7,15 +7,24 @@ use App\Form\CreatureType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/creature")
  */
 class AdminCreatureController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Créature',
+        'label_pluriel' => 'Créatures',
+        'slug'  => 'creature'
+    ];
+    
     /**
-     * @Route("/", name="creature_index", methods="GET")
+     * @Route("/", name="creature_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminCreatureController extends Controller
     }
 
     /**
-     * @Route("/new", name="creature_new", methods="GET|POST")
+     * @Route("/nouveau", name="creature_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminCreatureController extends Controller
             return $this->redirectToRoute('creature_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $creature,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="creature_show", methods="GET")
+     * @Route("/{id}", name="creature_show")
+     * @Method( {"GET"} )
      */
     public function show(Creature $creature): Response
     {
@@ -59,7 +70,8 @@ class AdminCreatureController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="creature_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="creature_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Creature $creature): Response
     {
@@ -72,15 +84,16 @@ class AdminCreatureController extends Controller
             return $this->redirectToRoute('creature_edit', ['id' => $creature->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $creature,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="creature_delete", methods="DELETE")
+     * @Route("/{id}", name="creature_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Creature $creature): Response
     {

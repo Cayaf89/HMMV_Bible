@@ -7,15 +7,24 @@ use App\Form\FactionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/faction")
  */
 class AdminFactionController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Faction',
+        'label_pluriel' => 'Factions',
+        'slug'  => 'faction'
+    ];
+    
     /**
-     * @Route("/", name="faction_index", methods="GET")
+     * @Route("/", name="faction_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminFactionController extends Controller
     }
 
     /**
-     * @Route("/new", name="faction_new", methods="GET|POST")
+     * @Route("/nouveau", name="faction_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminFactionController extends Controller
             return $this->redirectToRoute('faction_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $faction,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="faction_show", methods="GET")
+     * @Route("/{id}", name="faction_show")
+     * @Method( {"GET"} )
      */
     public function show(Faction $faction): Response
     {
@@ -59,7 +70,8 @@ class AdminFactionController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="faction_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="faction_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Faction $faction): Response
     {
@@ -72,15 +84,16 @@ class AdminFactionController extends Controller
             return $this->redirectToRoute('faction_edit', ['id' => $faction->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $faction,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="faction_delete", methods="DELETE")
+     * @Route("/{id}", name="faction_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Faction $faction): Response
     {

@@ -7,15 +7,24 @@ use App\Form\SemaineType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/semaine")
  */
 class AdminSemaineController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Semaine',
+        'label_pluriel' => 'Semaines',
+        'slug'  => 'semaine'
+    ];
+    
     /**
-     * @Route("/", name="semaine_index", methods="GET")
+     * @Route("/", name="semaine_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminSemaineController extends Controller
     }
 
     /**
-     * @Route("/new", name="semaine_new", methods="GET|POST")
+     * @Route("/nouveau", name="semaine_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminSemaineController extends Controller
             return $this->redirectToRoute('semaine_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $semaine,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="semaine_show", methods="GET")
+     * @Route("/{id}", name="semaine_show")
+     * @Method( {"GET"} )
      */
     public function show(Semaine $semaine): Response
     {
@@ -59,7 +70,8 @@ class AdminSemaineController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="semaine_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="semaine_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Semaine $semaine): Response
     {
@@ -72,15 +84,16 @@ class AdminSemaineController extends Controller
             return $this->redirectToRoute('semaine_edit', ['id' => $semaine->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $semaine,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="semaine_delete", methods="DELETE")
+     * @Route("/{id}", name="semaine_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Semaine $semaine): Response
     {

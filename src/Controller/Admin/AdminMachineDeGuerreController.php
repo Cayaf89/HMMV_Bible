@@ -7,15 +7,24 @@ use App\Form\MachineDeGuerreType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/machine/de/guerre")
  */
 class AdminMachineDeGuerreController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Machine de guerre',
+        'label_pluriel' => 'Machines de guerre',
+        'slug'  => 'machine_de_guerre'
+    ];
+    
     /**
-     * @Route("/", name="machine_de_guerre_index", methods="GET")
+     * @Route("/", name="machine_de_guerre_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminMachineDeGuerreController extends Controller
     }
 
     /**
-     * @Route("/new", name="machine_de_guerre_new", methods="GET|POST")
+     * @Route("/nouveau", name="machine_de_guerre_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminMachineDeGuerreController extends Controller
             return $this->redirectToRoute('machine_de_guerre_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $machineDeGuerre,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="machine_de_guerre_show", methods="GET")
+     * @Route("/{id}", name="machine_de_guerre_show")
+     * @Method( {"GET"} )
      */
     public function show(MachineDeGuerre $machineDeGuerre): Response
     {
@@ -59,7 +70,8 @@ class AdminMachineDeGuerreController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="machine_de_guerre_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="machine_de_guerre_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, MachineDeGuerre $machineDeGuerre): Response
     {
@@ -72,15 +84,16 @@ class AdminMachineDeGuerreController extends Controller
             return $this->redirectToRoute('machine_de_guerre_edit', ['id' => $machineDeGuerre->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $machineDeGuerre,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="machine_de_guerre_delete", methods="DELETE")
+     * @Route("/{id}", name="machine_de_guerre_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, MachineDeGuerre $machineDeGuerre): Response
     {

@@ -7,15 +7,24 @@ use App\Form\RessourceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/ressource")
  */
 class AdminRessourceController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Ressource',
+        'label_pluriel' => 'Ressources',
+        'slug'  => 'ressource'
+    ];
+    
     /**
-     * @Route("/", name="ressource_index", methods="GET")
+     * @Route("/", name="ressource_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminRessourceController extends Controller
     }
 
     /**
-     * @Route("/new", name="ressource_new", methods="GET|POST")
+     * @Route("/nouveau", name="ressource_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminRessourceController extends Controller
             return $this->redirectToRoute('ressource_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $ressource,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="ressource_show", methods="GET")
+     * @Route("/{id}", name="ressource_show")
+     * @Method( {"GET"} )
      */
     public function show(Ressource $ressource): Response
     {
@@ -59,7 +70,8 @@ class AdminRessourceController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="ressource_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="ressource_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Ressource $ressource): Response
     {
@@ -72,15 +84,16 @@ class AdminRessourceController extends Controller
             return $this->redirectToRoute('ressource_edit', ['id' => $ressource->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $ressource,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="ressource_delete", methods="DELETE")
+     * @Route("/{id}", name="ressource_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Ressource $ressource): Response
     {

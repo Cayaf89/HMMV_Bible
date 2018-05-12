@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Artefact;
 use App\Entity\Batiment;

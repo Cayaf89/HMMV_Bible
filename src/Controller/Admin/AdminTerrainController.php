@@ -7,15 +7,24 @@ use App\Form\TerrainType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/terrain")
  */
 class AdminTerrainController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouveau',
+        'label' => 'Terrain',
+        'label_pluriel' => 'Terrains',
+        'slug'  => 'terrain'
+    ];
+    
     /**
-     * @Route("/", name="terrain_index", methods="GET")
+     * @Route("/", name="terrain_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminTerrainController extends Controller
     }
 
     /**
-     * @Route("/new", name="terrain_new", methods="GET|POST")
+     * @Route("/nouveau", name="terrain_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminTerrainController extends Controller
             return $this->redirectToRoute('terrain_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $terrain,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="terrain_show", methods="GET")
+     * @Route("/{id}", name="terrain_show")
+     * @Method( {"GET"} )
      */
     public function show(Terrain $terrain): Response
     {
@@ -59,7 +70,8 @@ class AdminTerrainController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="terrain_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="terrain_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Terrain $terrain): Response
     {
@@ -72,15 +84,16 @@ class AdminTerrainController extends Controller
             return $this->redirectToRoute('terrain_edit', ['id' => $terrain->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $terrain,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="terrain_delete", methods="DELETE")
+     * @Route("/{id}", name="terrain_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Terrain $terrain): Response
     {

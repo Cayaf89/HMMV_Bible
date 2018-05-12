@@ -7,15 +7,24 @@ use App\Form\PanoplieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/panoplie")
  */
 class AdminPanoplieController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Panoplie',
+        'label_pluriel' => 'Panoplies',
+        'slug'  => 'panoplie'
+    ];
+    
     /**
-     * @Route("/", name="panoplie_index", methods="GET")
+     * @Route("/", name="panoplie_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminPanoplieController extends Controller
     }
 
     /**
-     * @Route("/new", name="panoplie_new", methods="GET|POST")
+     * @Route("/nouveau", name="panoplie_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminPanoplieController extends Controller
             return $this->redirectToRoute('panoplie_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $panoplie,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="panoplie_show", methods="GET")
+     * @Route("/{id}", name="panoplie_show")
+     * @Method( {"GET"} )
      */
     public function show(Panoplie $panoplie): Response
     {
@@ -59,7 +70,8 @@ class AdminPanoplieController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="panoplie_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="panoplie_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Panoplie $panoplie): Response
     {
@@ -72,15 +84,16 @@ class AdminPanoplieController extends Controller
             return $this->redirectToRoute('panoplie_edit', ['id' => $panoplie->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $panoplie,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="panoplie_delete", methods="DELETE")
+     * @Route("/{id}", name="panoplie_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Panoplie $panoplie): Response
     {

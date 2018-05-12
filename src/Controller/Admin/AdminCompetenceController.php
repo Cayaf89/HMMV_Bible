@@ -7,15 +7,24 @@ use App\Form\CompetenceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/competence")
  */
 class AdminCompetenceController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Compétence',
+        'label_pluriel' => 'Compétences',
+        'slug'  => 'competence'
+    ];
+    
     /**
-     * @Route("/", name="competence_index", methods="GET")
+     * @Route("/", name="competence_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminCompetenceController extends Controller
     }
 
     /**
-     * @Route("/new", name="competence_new", methods="GET|POST")
+     * @Route("/nouveau", name="competence_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminCompetenceController extends Controller
             return $this->redirectToRoute('competence_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $competence,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="competence_show", methods="GET")
+     * @Route("/{id}", name="competence_show")
+     * @Method( {"GET"} )
      */
     public function show(Competence $competence): Response
     {
@@ -59,7 +70,8 @@ class AdminCompetenceController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="competence_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="competence_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Competence $competence): Response
     {
@@ -72,15 +84,16 @@ class AdminCompetenceController extends Controller
             return $this->redirectToRoute('competence_edit', ['id' => $competence->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $competence,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="competence_delete", methods="DELETE")
+     * @Route("/{id}", name="competence_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Competence $competence): Response
     {

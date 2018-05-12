@@ -7,15 +7,24 @@ use App\Form\CapaciteType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/capacite")
  */
 class AdminCapaciteController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Capacité',
+        'label_pluriel' => 'Capacités',
+        'slug'  => 'capacite'
+    ];
+    
     /**
-     * @Route("/", name="capacite_index", methods="GET")
+     * @Route("/", name="capacite_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminCapaciteController extends Controller
     }
 
     /**
-     * @Route("/new", name="capacite_new", methods="GET|POST")
+     * @Route("/nouveau", name="capacite_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminCapaciteController extends Controller
             return $this->redirectToRoute('capacite_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $capacite,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="capacite_show", methods="GET")
+     * @Route("/{id}", name="capacite_show")
+     * @Method( {"GET"} )
      */
     public function show(Capacite $capacite): Response
     {
@@ -59,7 +70,8 @@ class AdminCapaciteController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="capacite_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="capacite_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Capacite $capacite): Response
     {
@@ -72,14 +84,15 @@ class AdminCapaciteController extends Controller
             return $this->redirectToRoute('capacite_edit', ['id' => $capacite->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $capacite,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));    }
+        $this->twig_form_view_params));    }
 
     /**
-     * @Route("/{id}", name="capacite_delete", methods="DELETE")
+     * @Route("/{id}", name="capacite_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Capacite $capacite): Response
     {

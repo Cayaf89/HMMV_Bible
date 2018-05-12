@@ -7,15 +7,24 @@ use App\Form\PelotonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/peloton")
  */
 class AdminPelotonController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouveau',
+        'label' => 'Peloton',
+        'label_pluriel' => 'Prelotons',
+        'slug'  => 'peloton'
+    ];
+    
     /**
-     * @Route("/", name="peloton_index", methods="GET")
+     * @Route("/", name="peloton_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminPelotonController extends Controller
     }
 
     /**
-     * @Route("/new", name="peloton_new", methods="GET|POST")
+     * @Route("/nouveau", name="peloton_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminPelotonController extends Controller
             return $this->redirectToRoute('peloton_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $peloton,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="peloton_show", methods="GET")
+     * @Route("/{id}", name="peloton_show")
+     * @Method( {"GET"} )
      */
     public function show(Peloton $peloton): Response
     {
@@ -59,7 +70,8 @@ class AdminPelotonController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="peloton_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="peloton_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Peloton $peloton): Response
     {
@@ -72,15 +84,16 @@ class AdminPelotonController extends Controller
             return $this->redirectToRoute('peloton_edit', ['id' => $peloton->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $peloton,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="peloton_delete", methods="DELETE")
+     * @Route("/{id}", name="peloton_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Peloton $peloton): Response
     {

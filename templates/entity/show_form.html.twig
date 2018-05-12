@@ -51,14 +51,36 @@
     <script src="{{ asset('lib/jquery-validation/jquery.validate.js') }}"></script>
 {% endblock %}
 
+{% block javascript_prepare %}
+    <script type="application/javascript">
+        var toggle_cruds = function( ul )
+        {
+            if( $('#fab-delete').is(':visible') ) {
+                $('#fab-delete').hide();
+                $('#fab-delete').removeAttr('href');
+
+                $(ul).css('left', '-183px');
+                $(ul).css('width', '170px');
+                return false;
+            } else {
+                $('#fab-delete').show();
+                $(ul).css('left', '-240px');
+                $(ul).css('width', '225px');
+                return true;
+            }
+        }
+    </script>
+{% endblock %}
+
 {% block javascripts %}
     <script type="application/javascript">
         $(document).ready(function() {
             Metis.formWysiwyg();
             Metis.formValidation();
+
+            $('#fab-save').click(function () {
+                $('#block-validate').submit();
+            });
         });
     </script>
-    
-{% block javascript_child %}
-{% endblock %}
 {% endblock %}

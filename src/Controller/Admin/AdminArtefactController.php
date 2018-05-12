@@ -7,20 +7,24 @@ use App\Form\ArtefactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/artefact")
  */
 class AdminArtefactController extends Controller
 {
-    private $twig_params = [
-        'label' => 'Artéfact',
-        'slug' => 'artefact'        
+    private $twig_form_view_params = [
+        'etat'          => 'nouvel',
+        'label'         => 'Artéfact',
+        'label_pluriel' => 'Artéfacts',
+        'slug'          => 'artefact'
     ];
     
     /**
-     * @Route("/", name="artefact_index", methods="GET")
+     * @Route("/", name="artefact_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -32,7 +36,8 @@ class AdminArtefactController extends Controller
     }
 
     /**
-     * @Route("/new", name="artefact_new", methods="GET|POST")
+     * @Route("/nouveau", name="artefact_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -48,15 +53,16 @@ class AdminArtefactController extends Controller
             return $this->redirectToRoute('artefact_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $artefact,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="artefact_show", methods="GET")
+     * @Route("/afficher/{id}", name="artefact_show")
+     * @Method( {"GET"} )
      */
     public function show(Artefact $artefact): Response
     {
@@ -64,7 +70,8 @@ class AdminArtefactController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="artefact_edit", methods="GET|POST")
+     * @Route("/editer/{id}", name="artefact_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Artefact $artefact): Response
     {
@@ -77,15 +84,16 @@ class AdminArtefactController extends Controller
             return $this->redirectToRoute('artefact_edit', ['id' => $artefact->getId()]);
         }
         
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $artefact,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="artefact_delete", methods="DELETE")
+     * @Route("/supprimer/{id}", name="artefact_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Artefact $artefact): Response
     {

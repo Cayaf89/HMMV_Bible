@@ -7,15 +7,24 @@ use App\Form\HeroType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/hero")
  */
 class AdminHeroController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouveau',
+        'label' => 'Héro',
+        'label_pluriel' => 'Héros',
+        'slug'  => 'hero'
+    ];
+    
     /**
-     * @Route("/", name="hero_index", methods="GET")
+     * @Route("/", name="hero_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminHeroController extends Controller
     }
 
     /**
-     * @Route("/new", name="hero_new", methods="GET|POST")
+     * @Route("/nouveau", name="hero_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminHeroController extends Controller
             return $this->redirectToRoute('hero_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $hero,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="hero_show", methods="GET")
+     * @Route("/{id}", name="hero_show")
+     * @Method( {"GET"} )
      */
     public function show(Hero $hero): Response
     {
@@ -59,7 +70,8 @@ class AdminHeroController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="hero_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="hero_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Hero $hero): Response
     {
@@ -72,15 +84,16 @@ class AdminHeroController extends Controller
             return $this->redirectToRoute('hero_edit', ['id' => $hero->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $hero,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="hero_delete", methods="DELETE")
+     * @Route("/{id}", name="hero_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Hero $hero): Response
     {

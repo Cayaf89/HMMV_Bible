@@ -7,15 +7,24 @@ use App\Form\SortType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/sort")
  */
 class AdminSortController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouveau',
+        'label' => 'Sort',
+        'label_pluriel' => 'Sorts',
+        'slug'  => 'sort'
+    ];
+    
     /**
-     * @Route("/", name="sort_index", methods="GET")
+     * @Route("/", name="sort_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminSortController extends Controller
     }
 
     /**
-     * @Route("/new", name="sort_new", methods="GET|POST")
+     * @Route("/nouveau", name="sort_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminSortController extends Controller
             return $this->redirectToRoute('sort_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $sort,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="sort_show", methods="GET")
+     * @Route("/{id}", name="sort_show")
+     * @Method( {"GET"} )
      */
     public function show(Sort $sort): Response
     {
@@ -59,7 +70,8 @@ class AdminSortController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="sort_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="sort_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Sort $sort): Response
     {
@@ -72,15 +84,16 @@ class AdminSortController extends Controller
             return $this->redirectToRoute('sort_edit', ['id' => $sort->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $sort,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="sort_delete", methods="DELETE")
+     * @Route("/{id}", name="sort_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Sort $sort): Response
     {

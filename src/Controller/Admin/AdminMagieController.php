@@ -7,15 +7,24 @@ use App\Form\MagieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/magie")
  */
 class AdminMagieController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Magie',
+        'label_pluriel' => 'Magies',
+        'slug'  => 'magie'
+    ];
+    
     /**
-     * @Route("/", name="magie_index", methods="GET")
+     * @Route("/", name="magie_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -27,7 +36,8 @@ class AdminMagieController extends Controller
     }
 
     /**
-     * @Route("/new", name="magie_new", methods="GET|POST")
+     * @Route("/nouveau", name="magie_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +53,16 @@ class AdminMagieController extends Controller
             return $this->redirectToRoute('magie_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $magie,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="magie_show", methods="GET")
+     * @Route("/{id}", name="magie_show")
+     * @Method( {"GET"} )
      */
     public function show(Magie $magie): Response
     {
@@ -59,7 +70,8 @@ class AdminMagieController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="magie_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="magie_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Magie $magie): Response
     {
@@ -72,15 +84,16 @@ class AdminMagieController extends Controller
             return $this->redirectToRoute('magie_edit', ['id' => $magie->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $magie,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="magie_delete", methods="DELETE")
+     * @Route("/{id}", name="magie_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Magie $magie): Response
     {

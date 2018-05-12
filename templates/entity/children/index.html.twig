@@ -1,32 +1,34 @@
 {% extends 'entity/show_index.html.twig' %}
 
-{% block title %}Artefact index{% endblock %}
+{% block title %}Liste {{ label_pluriel }}{% endblock %}
 
 {% block body %}
-    <h1>Artefact index</h1>
+    <h1>Liste {{ label_pluriel }}</h1>
 
-    <table class="table table-bordered table-condensed table-hover" id="table_artefact">
+    <table class="table table-bordered table-condensed table-hover" id="table_{{ slug }}">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Emplacement</th>
-                <th>Importance</th>
+                {% for header in headers %}
+                    <th>{{ header }}</th>
+                {% endfor %}
             </tr>
         </thead>
         <tbody>
-        {% for artefact in artefacts %}
-            <tr id="{{ artefact.id }}">
-                <td>{{ artefact.id }}</td>
-                <td>{{ artefact.nom }}</td>
-                <td>{{ artefact.description|truncate(255, '...')|raw }}</td>
-                <td>{{ artefact.emplacement }}</td>
-                <td>{{ artefact.importance }}</td>
+        {% for object in objects %}
+            <tr id="{{ object.id }}">
+                {% for attr in object|keys %}
+                    <td>
+                        {% if object.attr|length > 255 %}
+                            {{ object.attr|truncate('...')|raw }}
+                        {% else %}
+                            {{ object.attr }}
+                        {% endif %}
+                    </td>
+                {% endfor %}
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="{{ headers|length }}">Aucune ligne.</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -38,7 +40,7 @@
     <script>
         $(document).ready(function () {
             toggle_cruds($('.fixed-action-btn ul.left-fab').first());
-            $('#table_artefact tbody tr').click(function () 
+            $('#table_{{ slug }} tbody tr').click(function () 
             {
                 if( $(this).hasClass('active') ) {
                     $(this).removeClass('active');
@@ -46,21 +48,21 @@
                     return;
                 }
                 
-                var lastActive = $('#table_artefact tbody tr.active');
+                var lastActive = $('#table_{{ slug }} tbody tr.active');
                 lastActive.first().removeClass('active');
                 
                 var id = $(this).attr('id');
                 $(this).addClass('active');
                 
-                var urlDelete = '{{ path('artefact_delete', {'id': "id_to_replace"}) }}';
+                var urlDelete = '{{ path(slug ~'_delete', {'id': "id_to_replace"}) }}';
                 urlDelete = urlDelete.replace('id_to_replace', id);
                 $('#fab-delete').attr('href', urlDelete);
                 
-                var urlShow = '{{ path('artefact_show', {'id': "id_to_replace"}) }}';
+                var urlShow = '{{ path(slug ~'_show', {'id': "id_to_replace"}) }}';
                 urlShow = urlShow.replace('id_to_replace', id);
                 $('#fab-show').attr('href', urlShow);
                 
-                var urlEdit = '{{ path('artefact_edit', {'id': "id_to_replace"}) }}';
+                var urlEdit = '{{ path(slug ~'_edit', {'id': "id_to_replace"}) }}';
                 urlEdit = urlEdit.replace('id_to_replace', id);
                 $('#fab-edit').attr('href', urlEdit);
                 
@@ -68,7 +70,7 @@
                     toggle_cruds($('.fixed-action-btn ul.left-fab').first());
                 }
             });
-            $('#fab-new').attr('href', '{{ path('artefact_new') }}');
+            $('#fab-new').attr('href', '{{ path(slug~'_new') }}');
         });
     </script>
 {% endblock %}

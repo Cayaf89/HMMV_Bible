@@ -7,15 +7,26 @@ use App\Form\VilleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/admin/ville")
  */
 class AdminVilleController extends Controller
 {
+    private $twig_form_view_params = [
+        'etat'  => 'nouvelle',
+        'label' => 'Ville',
+        'label_pluriel' => 'Villes',
+        'slug'  => 'ville',
+        'methods' => ["id", "nom", "description"],
+        'headers' => ["Id", "Nom", "Description"]
+    ];
+    
     /**
-     * @Route("/", name="ville_index", methods="GET")
+     * @Route("/", name="ville_index")
+     * @Method( {"GET"} )
      */
     public function index(): Response
     {
@@ -23,11 +34,16 @@ class AdminVilleController extends Controller
             ->getRepository(Ville::class)
             ->findAll();
 
-        return $this->render('ville/index.html.twig', ['villes' => $villes]);
+        
+        return $this->render('entity/children/index.html.twig', array_merge([
+            'objects'   => $villes,
+        ], 
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/new", name="ville_new", methods="GET|POST")
+     * @Route("/nouveau", name="ville_new")
+     * @Method( {"GET","POST"} )
      */
     public function new(Request $request): Response
     {
@@ -43,15 +59,16 @@ class AdminVilleController extends Controller
             return $this->redirectToRoute('ville_index');
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $ville,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="ville_show", methods="GET")
+     * @Route("/{id}", name="ville_show")
+     * @Method( {"GET"} )
      */
     public function show(Ville $ville): Response
     {
@@ -59,7 +76,8 @@ class AdminVilleController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="ville_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="ville_edit")
+     * @Method( {"GET","POST"} )
      */
     public function edit(Request $request, Ville $ville): Response
     {
@@ -72,15 +90,16 @@ class AdminVilleController extends Controller
             return $this->redirectToRoute('ville_edit', ['id' => $ville->getId()]);
         }
 
-        return $this->render('form/form.html.twig', array_merge([
+        return $this->render('entity/children/form.html.twig', array_merge([
             'object'   => $ville,
             'form'     => $form->createView()
         ], 
-        $this->twig_params));
+        $this->twig_form_view_params));
     }
 
     /**
-     * @Route("/{id}", name="ville_delete", methods="DELETE")
+     * @Route("/{id}", name="ville_delete")
+     * @Method( {"GET","POST"} )
      */
     public function delete(Request $request, Ville $ville): Response
     {
